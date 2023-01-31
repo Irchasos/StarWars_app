@@ -11,15 +11,15 @@ services:
       - .docker/php-fpm/entrypoint/docker-entrypoint.sh:/opt/docker-entrypoint.sh:ro
     depends_on:
       - database
-#    networks:
-#      - docker
+    networks:
+      - docker
   dozzle:
     container_name: dozzle_logs
     image: amir20/dozzle:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "9080:9080"
+      - "9080:8080"
     environment:
       DOZZLE_LEVEL: trace
     healthcheck:
@@ -28,8 +28,8 @@ services:
       timeout: 30s
       retries: 5
       start_period: 30s
-#    networks:
-#      - docker
+    networks:
+      - docker
   nginx:
     container_name: nginx
     image: nginx:alpine
@@ -41,8 +41,8 @@ services:
     volumes:
       - ./:/var/www
       - .docker/nginx/conf.d/:/etc/nginx/conf.d/
-#    networks:
-#      - docker
+    networks:
+      - docker
   database:
     container_name: db_mysql
     build:
@@ -58,37 +58,36 @@ services:
       - ./.docker/mysql/data:/var/lib/mysql
     ports:
       - "3306:3306"
-#    networks:
-#       - "docker"
+    networks:
+       - docker
   phpmyadmin:
     image: phpmyadmin
     container_name: php_my_admin
     restart: unless-stopped
     ports:
-      - "8081:81"
+      - "8081:80"
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=database
       - PMA_USER=${DB_USERNAME}
       - PMA_PASSWORD=${DB_PASSWORD}
-#    networks:
-#      - docker
-#    redis:
-#      container_name: redis
-#      image: redis
-#      restart: unless-stopped
-#      volumes:
-#        - .docker/redis/data:/data
-#      networks:
-#        - docker
-#      ports:
-#        - "6379:6379"
-#    mailcatcher:
-#      image: schickling/mailcatcher:latest
-#      container_name: ${MAILCATCHER_CONTAINER_NAME}
-#      ports:
-#        - 8003:1025
-#        - 1080:080
+    networks:
+      - docker
+  redis:
+    container_name: redis
+    image: redis
+    restart: unless-stopped
+    volumes:
+      - .docker/redis/data:/data
+    networks:
+      - docker
+    ports:
+      - "6379:6379"
+  mailcatcher:
+    image: schickling/mailcatcher:latest
+    ports:
+      - "1025:1025"
+      - "1080:1080"
 networks:
-  default:
-    name: 'docker'
+  docker:
+    name: docker

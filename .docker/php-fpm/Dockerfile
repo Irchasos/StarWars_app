@@ -1,7 +1,7 @@
 FROM php:8.1-fpm
 
 RUN apt-get update
-RUN apt-get install -y openssl zip unzip git curl libzip-dev libonig-dev libicu-dev autoconf pkg-config libssl-dev libpq-dev
+RUN apt-get install -y openssl zip unzip git curl libzip-dev libonig-dev libicu-dev autoconf pkg-config libssl-dev libpq-dev mariadb-client
 RUN docker-php-ext-install bcmath mbstring intl opcache pdo sockets pdo_mysql
 
 RUN pecl install xdebug
