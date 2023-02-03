@@ -25,7 +25,7 @@ class AccountController extends Controller
 {
     private $service;
 
-    public function __construct(CharacterService $service)
+    public function __construct (CharacterService $service)
     {
         $this->service = $service;
     }
@@ -40,6 +40,31 @@ class AccountController extends Controller
             ->with('permissions', $permissions);
 
 
+    }
+
+    public function avatarUpload()
+    {
+    }
+
+    public function avatarUploaded(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+
+        ]);
+
+
+        $file = $request->file('image');
+        $extention = $file->getClientOriginalExtension();
+        $name = "public/avatars_images/" . Uuid::uuid4() . ".$extention";
+
+        Storage::put($name, $file->get());
+        $url = Storage::url($name);
+
+        User::whereId(auth()->user()->id)->update(['avatar'=>$url]);
+
+        return back()->with('success', 'Photo Uploaded');
     }
 
     public function changeData(Request $request)
@@ -80,11 +105,11 @@ class AccountController extends Controller
 
     public function chooseModel()
     {
-        $models = array("Character", "Planet", "Vehicle", "Starship");
+
         $photos = Photo::all();
 
 
-        return view('account.chooseModel')->with('models', $models)->with('photos', $photos);
+        return view('account.chooseModel')->with('photos', $photos);
     }
 
     public function imageUpload()

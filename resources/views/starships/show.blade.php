@@ -5,12 +5,18 @@
             <div class="row">
 
                 <div class="col-md-3 right-grid">
+                    @if(file_exists($starship->photos))
+
                     @foreach($starship->photos as $photo)
 
                         <img src="{{$photo->path}}" alt=""
                              style="width: 700px; height: 800px; padding-bottom: 30px "/>>
 
                     @endforeach
+                    @else
+                        <img  src="{{url ($placeholder->path)}}" alt=""
+                              style="width: 800px; height: 800px; padding-bottom: 30px "/>
+                        @endif
 
                     <!--Put your Right Image HERE-->
                 </div>

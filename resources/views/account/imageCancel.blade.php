@@ -22,7 +22,9 @@
         </tr>
         </thead>
         <tbody>
+
         @foreach($photos as $photo)
+            @if($photo->photoable_id != '0')
             <tr>
 
                 <td>{{$photo->id}}</td>
@@ -44,7 +46,7 @@
                     </form>
                 </td>
 
-            </tr>
+            </tr> @endif
         @endforeach
         </tbody>
     </table>

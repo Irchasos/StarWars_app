@@ -166,6 +166,8 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 //        Maatwebsite\Excel\ExcelServiceProvider::class,
+        App\Providers\GoogleDriveServiceProvider::class,
+
 
         /*
          * Package Service Providers...

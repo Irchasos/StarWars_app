@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStarshipRequest;
 use App\Http\Requests\UpdateStarshipRequest;
+use App\Models\Photo;
 use App\Models\Starship;
 use App\Services\StarshipService;
 use Illuminate\Http\RedirectResponse;
@@ -39,8 +40,9 @@ class StarshipsController extends Controller
     public function show(Starship $starship): View
     {
         $this->service->showData($starship);
+        $placeholder = Photo::where('photoable_type', "starship")->first();
 
-        return view('starships.show')->with('starship', $starship);
+        return view('starships.show')->with('starship', $starship)->with('placeholder', $placeholder);
     }
 
     public function edit(Starship $starship): view

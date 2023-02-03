@@ -85,8 +85,10 @@ Route::post('change-data', [AccountController::class, 'changeData'])->name('chan
 Route::get('passport', [AccountController::class, 'passport'])->name('passport')->middleware('auth');
 Route::post('generate-passport', [AccountController::class, 'generatePassport'])->name('generatePassport');
 Route::get('image-upload', [AccountController::class, 'imageUpload'])->name('image.upload')->middleware('auth');
+Route::get('avatar-upload', [AccountController::class, 'avatarUpload'])->name('avatar.upload')->middleware('auth');
 Route::get('image-choose', [AccountController::class, 'chooseModel'])->name('image.choose')->middleware('auth');
 Route::post('image-upload', [AccountController::class, 'imageUploaded'])->name('image.uploaded')->middleware('auth');
+Route::post('avatar-upload', [AccountController::class, 'avatarUploaded'])->name('avatar.uploaded')->middleware('auth');
 Route::get('image-cancel', [AccountController::class, 'imageCancel'])->name('image.cancel')->middleware('auth');
 Route::DELETE('/photos/{photo}', [AccountController::class, 'destroy'])->name('image.destroy');
 

@@ -3,18 +3,24 @@
     <div class="row">
 
         <div class="col-md-3 right-grid">
-            @foreach($planet->photos as $photo)
+            @if(file_exists($planet->photos))
 
-                <img src="{{$photo->path}}" alt=""
-                     style="width: 700px; height: 800px; padding-bottom: 30px "/>>
+                @foreach($planet->photos as $photo)
 
-            @endforeach
+                    <img src="{{$photo->path}}" alt=""
+                         style="width: 700px; height: 800px; padding-bottom: 30px "/>>
+
+                @endforeach
+            @else
+                <img  src="{{url ($placeholder->path)}}" alt=""
+                      style="width: 700px; height: 800px; padding-bottom: 30px "/>
+            @endif
         </div>
 
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top">
 
-                <div class="right-bottom" >
+                <div class="right-bottom">
 
                     <h3><span>{{$planet->name}}</span> {{$planet->terrain}}</h3>
 

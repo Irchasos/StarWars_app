@@ -1,10 +1,13 @@
 <?php
 declare(strict_types=1);
+
 namespace App\Http\Controllers;
+
 use App\Http\Requests\StoreCharacterRequest;
 use App\Http\Requests\UpdateCharacterRequest;
 use App\Models\Character;
 use App\Models\Kind;
+use App\Models\Photo;
 use App\Models\Planet;
 use App\Models\Starship;
 use App\Services\CharacterService;
@@ -61,8 +64,9 @@ class CharactersController extends Controller
     public function show(Character $character): View
     {
         $this->service->showData($character);
+        $placeholder = Photo::where('photoable_type', "character")->first();
 
-        return view('characters.show')->with('character', $character);
+        return view('characters.show')->with('character', $character)->with('placeholder', $placeholder);
     }
 
     public function edit(Character $character): view

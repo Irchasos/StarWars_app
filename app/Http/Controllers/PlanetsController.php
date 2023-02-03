@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePlanetRequest;
 use App\Http\Requests\UpdatePlanetRequest;
+use App\Models\Photo;
 use App\Models\Planet;
 use App\Services\PlanetService;
 use Illuminate\Http\RedirectResponse;
@@ -40,8 +41,9 @@ class PlanetsController extends Controller
     public function show(Planet $planet): View
     {
         $this->service->showData($planet);
+        $placeholder = Photo::where('photoable_type', "planet")->first();
 
-        return view('planets.show')->with('planet', $planet);
+        return view('planets.show')->with('planet', $planet)->with('placeholder', $placeholder);
     }
 
     public function edit(Planet $planet): view
