@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -25,28 +25,29 @@
 
         @foreach($photos as $photo)
             @if($photo->photoable_id != '0')
-            <tr>
+                <tr>
 
-                <td>{{$photo->id}}</td>
-                <td>{{$photo->photoable_type}}</td>
-                <td>{{$photo->photoable_id}}</td>
-                <td>{{$photo->path}}</td>
+                    <td>{{$photo->id}}</td>
+                    <td>{{$photo->photoable_type}}</td>
+                    <td>{{$photo->photoable_id}}</td>
+                    <td>{{$photo->path}}</td>
 
-                <td>{{$photo->photoable->name . $photo->photoable->title}}</td>
-                <td><img src="{{asset($photo->path)}}" alt=""
-                         style="width: 400px; height:100px; "/></td>
-                <td>
-                    <form action="{{ route('image.destroy',$photo->id) }}" method="POST">
+                    <td>{{$photo->photoable->name . $photo->photoable->title}}</td>
+                    <td><img src="{{asset($photo->path)}}" alt=""
+                             style="width: 400px; height:100px; "/></td>
+                    <td>
+                        <form action="{{ route('image.destroy',$photo->id) }}" method="POST">
 
 
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i
-                                class="fa-solid fa-person-falling-burst"></i></button>
-                    </form>
-                </td>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i
+                                        class="fa-solid fa-person-falling-burst"></i></button>
+                        </form>
+                    </td>
 
-            </tr> @endif
+                </tr>
+            @endif
         @endforeach
         </tbody>
     </table>

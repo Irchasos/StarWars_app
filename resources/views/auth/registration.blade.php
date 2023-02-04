@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('content')
     <main class="signup-form">
@@ -24,6 +24,7 @@
                                         <span class="text-danger">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
+
                                 <div class="form-group mb-3">
                                     <input type="password" placeholder="Password" id="password" class="form-control"
                                            name="password" required>
@@ -36,6 +37,11 @@
                                         <label><input type="checkbox" name="remember"> Remember Me</label>
                                     </div>
                                 </div>
+                                <div class="form-group mb-3">
+
+                                {!!getCaptchaBox()!!}
+                                </div>
+
                                 <div class="d-grid mx-auto">
                                     <button type="submit" class="btn btn-dark btn-block">Sign up</button>
                                 </div>
@@ -46,4 +52,23 @@
             </div>
         </div>
     </main>
+
+
+
+    <script type="text/javascript">
+
+
+        $(".btn-refresh").click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/refresh_captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+
+
+    </script>
+
 @endsection

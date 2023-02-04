@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -37,8 +37,8 @@
                 <td>{{$kind->average_lifespan}}</td>
                 <td>{{$kind->language}}</td>
                 <td>
-                <a class="btn btn-info" href="{{ route('kinds.show',$kind->id) }}"><i
-                        class="fa-solid fa-face-grin-beam"></i></a></td>
+                    <a class="btn btn-info" href="{{ route('kinds.show',$kind->id) }}"><i
+                                class="fa-solid fa-face-grin-beam"></i></a></td>
             </tr>
         @endforeach
         </tbody>

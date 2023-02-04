@@ -6,11 +6,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('layout');
+        return view('layouts.layout',);
     }
 
     public function entrance()
     {
-        return view('entrance');
+        return view('layouts.entrance');
     }
 }

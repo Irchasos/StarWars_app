@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PassportCharacterRequest;
 use App\Models\Character;
+use App\Models\MessageToBoss;
 use App\Models\Photo;
 use App\Models\Planet;
 use App\Models\User;
@@ -17,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
@@ -25,7 +27,7 @@ class AccountController extends Controller
 {
     private $service;
 
-    public function __construct (CharacterService $service)
+    public function __construct(CharacterService $service)
     {
         $this->service = $service;
     }
@@ -33,6 +35,8 @@ class AccountController extends Controller
     public function myAccount()
     {
         $user = Auth::user();
+
+
         $permissions = $user->getPermissionsViaRoles();
 
         return view('account.profile')
@@ -62,7 +66,7 @@ class AccountController extends Controller
         Storage::put($name, $file->get());
         $url = Storage::url($name);
 
-        User::whereId(auth()->user()->id)->update(['avatar'=>$url]);
+        User::whereId(auth()->user()->id)->update(['avatar' => $url]);
 
         return back()->with('success', 'Photo Uploaded');
     }
@@ -164,4 +168,18 @@ class AccountController extends Controller
 
         return redirect(route('image.cancel'))->with('success', 'Photo deleted successfully.');
     }
+
+    public function reports()
+    {
+        $user = Auth::user();
+
+        $messages = DB::table('message_to_boss')->where('boss_id', '=', $user->id)->get();
+
+
+        return view('account.reports')
+            ->with('user', $user)
+            ->with('messages', $messages);
+
+    }
+
 }

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="row">
 
@@ -16,9 +16,7 @@
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top">
 
-                <div class="right-bottom" >
-
-
+                <div class="right-bottom">
 
 
                     <h3><span>{{$kind->name}}</span></h3>

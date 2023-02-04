@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -10,7 +10,7 @@
     @endif
     <table class="table table-dark">
         @can('make a character in base')
-        <a class="btn btn-success" href="{{ route('starships.create') }}">create</a>
+            <a class="btn btn-success" href="{{ route('starships.create') }}">create</a>
         @endcan
         <thead>
         <tr>
@@ -29,14 +29,14 @@
                 <td>
                     <a class="btn btn-info" href="{{ route('starships.show',$starship->id) }}">Show</a>
 
-                @can('edit character in base')
-                    <form action="{{ route('starships.destroy',$starship->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('starships.edit',$starship->id) }}">Edit</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                        @endcan
+                    @can('edit character in base')
+                        <form action="{{ route('starships.destroy',$starship->id) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ route('starships.edit',$starship->id) }}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    @endcan
                 </td>
             </tr>
         @endforeach

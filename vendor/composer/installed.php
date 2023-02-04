@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '4ae6ee53d9c6eddd35e2d69caafe98b0b61f132f',
+        'reference' => 'd1780e0a2cc11c42ce2a08bc43643e3a106d400b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -34,6 +34,15 @@
             'reference' => '1d47648c6cef37f715ecb8bcc5f5a656ad372e27',
             'type' => 'library',
             'install_path' => __DIR__ . '/../barryvdh/laravel-dompdf',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'biscolab/laravel-recaptcha' => array(
+            'pretty_version' => 'v6.0.0',
+            'version' => '6.0.0.0',
+            'reference' => 'c3d742e6a082cefe2ffce1e13b17a104abfc7234',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../biscolab/laravel-recaptcha',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -256,6 +265,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'haruncpi/laravel-simple-captcha' => array(
+            'pretty_version' => 'v1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => 'cef6c97e8c71752f49a060001393b91db467d1fa',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../haruncpi/laravel-simple-captcha',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'illuminate/auth' => array(
             'dev_requirement' => false,
             'replaced' => array(
@@ -442,6 +460,15 @@
                 0 => 'v8.83.27',
             ),
         ),
+        'intervention/image' => array(
+            'pretty_version' => '2.7.2',
+            'version' => '2.7.2.0',
+            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../intervention/image',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
             'replaced' => array(
@@ -460,7 +487,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '4ae6ee53d9c6eddd35e2d69caafe98b0b61f132f',
+            'reference' => 'd1780e0a2cc11c42ce2a08bc43643e3a106d400b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -591,6 +618,15 @@
             'install_path' => __DIR__ . '/../maximebf/debugbar',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'mews/captcha' => array(
+            'pretty_version' => '3.2.10',
+            'version' => '3.2.10.0',
+            'reference' => '9aa77b818d46df8f46be16c2aea61a8fe77cb5e6',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../mews/captcha',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'mockery/mockery' => array(
             'pretty_version' => '1.5.1',

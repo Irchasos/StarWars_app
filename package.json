@@ -14,10 +14,16 @@
     "laravel-mix": "^6.0.19",
     "lodash": "^4.17.19",
     "postcss": "^8.1.14",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.58.0",
+    "sass-loader": "^12.6.0",
     "vue-loader": "^15.9.7",
     "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
+    "flag-icon": "^2.5.0",
+    "flag-icon-css": "^4.1.7",
+    "flag-icons": "^6.6.6",
     "vue": "^2.6.12"
   }
 }

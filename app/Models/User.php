@@ -11,6 +11,11 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    public function messages()
+    {
+        return $this->belongsToMany(User::class, 'message_to_boss', 'employer_id', 'boss_id');
+
+    }
 
     /**
      * The attributes that are mass assignable.

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="row">
 
@@ -12,13 +12,13 @@
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top"><h3><span>{{$character->name}}</span><br> from {{$character->planet->name}}</h3>
 
-                <div class="right-bottom" >
+                <div class="right-bottom">
 
-                    <p class="lable1">Details of character:
+                    <p class="lable1">{{ trans('characters_views.detail_of_character') }}:
                     </p>
                     <ul class="nav navbar-nav top">
-                        <li><a href="{{ route('characters') }}">View All characters</a></li>
-                        <li><h1>Edit {{ $character->name }}</h1></li>
+                        <li><a href="{{ route('characters') }}">{{ trans('characters_views.view_all_characters') }}</a></li>
+                        <li><h1>{{ trans('characters_views.edit') }} {{ $character->name }}</h1></li>
                     </ul>
 
                     <form action="{{ route('characters.update',$character->id) }}" method="POST">
@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Name:</strong>
+                                    <strong>{{ trans('characters_views.name') }}:</strong>
                                     <input type="text" name="name" value="{{ $character->name }}" class="form-control"
                                            placeholder="Name">
                                     @if ($errors->has('name'))
@@ -37,9 +37,9 @@
                             </div>
                             <div class="col-xs-10 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Homeworld:</strong>
+                                    <strong>{{ trans('characters_views.homeworld') }}:</strong>
                                     <select class="form-select" name="homeworld" aria-label="Default select example">
-                                        <option selected>Before:{{ $character->planet->name }}</option>
+                                        <option selected>{{ trans('characters_views.before') }}:{{ $character->planet->name }}</option>
                                         @foreach($planets as $planet)
                                             <option value="{{$planet->id}}">{{$planet->name}}</option>
                                         @endforeach
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Gender:</strong>
+                                    <strong>{{ trans('characters_views.gender') }}:</strong>
                                     <input type="text" name="gender" value="{{ $character->gender }}"
                                            class="form-control" placeholder="{{ $character->gender }}">
                                     @if ($errors->has('gender'))
@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Hair Color:</strong>
+                                    <strong>{{ trans('characters_views.hair_color') }}:</strong>
                                     <input type="text" name="hair_color" value="{{ $character->hair_color }}"
                                            class="form-control" placeholder="{{ $character->hair_color }}">
                                     @if ($errors->has('hair_color'))
@@ -71,7 +71,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Height:</strong>
+                                    <strong>{{ trans('characters_views.height') }}:</strong>
                                     <input type="text" name="height" value="{{ $character->height }}"
                                            class="form-control" placeholder="{{ $character->height }}">
                                     @if ($errors->has('height'))
@@ -82,7 +82,7 @@
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <strong>Mass:</strong>
+                                    <strong>{{ trans('characters_views.mass') }}:</strong>
                                     <input type="text" name="mass" value="{{ $character->mass }}" class="form-control"
                                            placeholder="{{ $character->mass }}">
                                     @if ($errors->has('mass'))
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-xs-10 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Starships:</strong>
+                                <strong>{{ trans('characters_views.starships') }}:</strong>
                                 <select id='myselect' multiple class="form-select" name="starships[]"
                                         aria-label="Default select example">
                                     @foreach($starships as $starship)
@@ -107,7 +107,7 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">{{ trans('characters_views.submit') }}</button>
                         </div>
                     </form>
                 </div>

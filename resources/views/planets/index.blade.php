@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -10,14 +10,14 @@
     @endif
     <table class="table table-dark">
         @can('make a character in base')
-        <a class="btn btn-success" href="{{ route('planets.create') }}">create</a>
+            <a class="btn btn-success" href="{{ route('planets.create') }}">{{ trans('planets_views.create') }}</a>
         @endcan
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Terrain</th>
-            <th>Url</th>
-            <th>Action</th>
+            <th>{{ trans('planets_views.name') }}</th>
+            <th>{{ trans('planets_views.terrain') }}</th>
+            <th>{{ trans('planets_views.url2') }}</th>
+            <th>{{ trans('planets_views.action') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -27,17 +27,16 @@
                 <td>{{$planet->terrain}}</td>
                 <td>{{$planet->url}}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('planets.show',$planet->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('planets.show',$planet->id) }}">{{ trans('planets_views.show') }}</a>
                     @can('edit character in base')
-                    <form action="{{ route('planets.destroy',$planet->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('planets.edit',$planet->id) }}">Edit</a>
+                        <form action="{{ route('planets.destroy',$planet->id) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ route('planets.edit',$planet->id) }}">{{ trans('planets_views.edit') }}</a>
 
 
-
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">{{ trans('planets_views.delete') }}</button>
+                        </form>
                     @endcan
                 </td>
             </tr>

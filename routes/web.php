@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'entrance'])->name('entrance');
 Route::get('/index', [HomeController::class, 'index'])->name('index');
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => '\App\Http\Controllers\LanguageController@switchLang']);
 //Characters->CRUD
 Route::get('/characters', [CharactersController::class, 'index'])->name('characters');
 Route::get('/characters/create', [CharactersController::class, 'create'])->name('characters.create');
@@ -81,6 +82,7 @@ Route::post('custom-registration', [CustomAuthController::class, 'customRegistra
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
 Route::get('account', [AccountController::class, 'myAccount'])->name('myAccount')->middleware('auth');
+Route::get('reports', [AccountController::class, 'reports'])->name('reports')->middleware('auth');
 Route::post('change-data', [AccountController::class, 'changeData'])->name('change.data')->middleware('auth');
 Route::get('passport', [AccountController::class, 'passport'])->name('passport')->middleware('auth');
 Route::post('generate-passport', [AccountController::class, 'generatePassport'])->name('generatePassport');
@@ -95,3 +97,4 @@ Route::DELETE('/photos/{photo}', [AccountController::class, 'destroy'])->name('i
 //EQ
 Route::get('my-eq', [EqController::class, 'myEq'])->name('myEq')->middleware('auth');
 
+Route::get('refresh_captcha', 'HomeController@refreshCaptcha')->name('refresh_captcha');

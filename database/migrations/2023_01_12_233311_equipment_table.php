@@ -15,13 +15,15 @@ class EquipmentTable extends Migration
     {
         Schema::create(
             'equipment', function (Blueprint $table) {
-            $table->text('Type');
             $table->text('Name');
+            $table->text('Group');
             $table->string('Price');
             $table->string('Rarity');
-            $table->text('Group');
-            $table->string('Availability');
+            $table->text('Type');
             $table->bigIncrements('Id');
+            $table->integer('Storage');
+
+
 
 
         }

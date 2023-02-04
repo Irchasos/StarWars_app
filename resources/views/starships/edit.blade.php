@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="row">
 
@@ -12,9 +12,9 @@
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top">
 
-                <div class="right-bottom" >
+                <div class="right-bottom">
 
-                <ul class="nav navbar-nav top">
+                    <ul class="nav navbar-nav top">
                         <li><a href="{{ route('starships') }}">View All starships</a></li>
                         <li><h1>Edit {{ $starship->name }}</h1></li>
                     </ul>
@@ -31,7 +31,7 @@
                                            placeholder="{{$starship->name}}">
                                     @if ($errors->has('name'))
                                         <span
-                                            class="text-danger">{{ $errors->first('name') }}</span>
+                                                class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                            name="model">
                                     @if ($errors->has('model'))
                                         <span
-                                            class="text-danger">{{ $errors->first('model') }}</span>
+                                                class="text-danger">{{ $errors->first('model') }}</span>
                                     @endif
                                 </div>
                             </div>

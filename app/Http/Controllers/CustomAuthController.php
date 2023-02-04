@@ -44,6 +44,7 @@ class CustomAuthController extends Controller
         return view('auth.registration');
     }
 
+
     public function customRegistration(Request $request)
     {
         $request->validate(
@@ -51,8 +52,9 @@ class CustomAuthController extends Controller
                 'name' => 'required',
                 'email' => 'required|email|unique:users',
                 'password' => 'required|min:6',
-            ]
-        );
+                '_answer' => 'required | simple_captcha' ]);
+
+
 
         $data = $request->all();
         $check = $this->create($data);
@@ -103,7 +105,8 @@ class CustomAuthController extends Controller
                 'email' => $user->email
             ], [
                 'name' => $user->name,
-                'password' => Hash::make(Str::random(24))
+                'password' => Hash::make(Str::random(24)),
+                'avatar' => 'storage/placeholders/character.jpg',
             ]
 
         );
@@ -175,4 +178,11 @@ class CustomAuthController extends Controller
         return redirect('/index')->withSuccess('Signed in');;
 
     }
+
+
+
+
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);}
 }
