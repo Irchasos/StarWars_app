@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="row">
 
@@ -12,9 +12,9 @@
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top">
 
-                <div class="right-bottom" >
+                <div class="right-bottom">
 
-                <ul class="nav navbar-nav top">
+                    <ul class="nav navbar-nav top">
                         <li><a href="{{ route('planets') }}">View All planets</a></li>
                         <li><h1>Edit {{ $planet->name }}</h1></li>
                     </ul>
@@ -29,7 +29,7 @@
                                            placeholder="Name">
                                     @if ($errors->has('name'))
                                         <span
-                                            class="text-danger">{{ $errors->first('name') }}</span>
+                                                class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                            name="terrain">
                                     @if ($errors->has('terrain'))
                                         <span
-                                            class="text-danger">{{ $errors->first('terrain') }}</span>
+                                                class="text-danger">{{ $errors->first('terrain') }}</span>
                                     @endif
                                 </div>
                             </div>

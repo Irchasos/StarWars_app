@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -42,7 +42,7 @@
                 <td>{{$vehicle->consumables}}</td>
                 <td>
                     <a class="btn btn-info" href="{{ route('vehicles.show',$vehicle->id) }}"><i
-                            class="fa-solid fa-face-grin-beam"></i></a></td>
+                                class="fa-solid fa-face-grin-beam"></i></a></td>
             </tr>
         @endforeach
         </tbody>

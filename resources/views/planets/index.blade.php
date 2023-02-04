@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -10,7 +10,7 @@
     @endif
     <table class="table table-dark">
         @can('make a character in base')
-        <a class="btn btn-success" href="{{ route('planets.create') }}">create</a>
+            <a class="btn btn-success" href="{{ route('planets.create') }}">create</a>
         @endcan
         <thead>
         <tr>
@@ -29,15 +29,14 @@
                 <td>
                     <a class="btn btn-info" href="{{ route('planets.show',$planet->id) }}">Show</a>
                     @can('edit character in base')
-                    <form action="{{ route('planets.destroy',$planet->id) }}" method="POST">
-                        <a class="btn btn-primary" href="{{ route('planets.edit',$planet->id) }}">Edit</a>
+                        <form action="{{ route('planets.destroy',$planet->id) }}" method="POST">
+                            <a class="btn btn-primary" href="{{ route('planets.edit',$planet->id) }}">Edit</a>
 
 
-
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     @endcan
                 </td>
             </tr>

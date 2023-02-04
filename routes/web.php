@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'entrance'])->name('entrance');
 Route::get('/index', [HomeController::class, 'index'])->name('index');
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => '\App\Http\Controllers\LanguageController@switchLang']);
 //Characters->CRUD
 Route::get('/characters', [CharactersController::class, 'index'])->name('characters');
 Route::get('/characters/create', [CharactersController::class, 'create'])->name('characters.create');

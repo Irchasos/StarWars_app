@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="row">
 
@@ -12,7 +12,7 @@
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top"><h3><span>{{$character->name}}</span><br> from {{$character->planet->name}}</h3>
 
-                <div class="right-bottom" >
+                <div class="right-bottom">
 
                     <p class="lable1">Details of character:
                     </p>

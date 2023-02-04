@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -12,10 +12,8 @@
 
         <div class="col-md-3 right-grid">
 
-            <img  style="width: 700px; height: 800px; padding-bottom: 30px " src="{{ asset('storage/eq/equipment.jpg') }}" alt="" title="">
-
-
-
+            <img style="width: 700px; height: 800px; padding-bottom: 30px "
+                 src="{{ asset('storage/eq/equipment.jpg') }}" alt="" title="">
 
 
         </div>
@@ -23,11 +21,13 @@
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top">
 
-                <div class="right-bottom" >
+                <div class="right-bottom">
 
                     <table class="table table-bordered table-dark">
                         <thead>
-                        <h3> {{$user->name}} with rank    @foreach ($user->roles as $role){{$role->name}}  @endforeach</h3>
+                        <h3> {{$user->name}} with rank @foreach ($user->roles as $role)
+                                {{$role->name}}
+                            @endforeach</h3>
 
                         <h3> My Equipment </h3>
 

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="row">
 
@@ -12,8 +12,8 @@
 
                 @endforeach
             @else
-                <img  src="{{url ($placeholder->path)}}" alt=""
-                      style="width: 700px; height: 800px; padding-bottom: 30px "/>
+                <img src="{{url ($placeholder->path)}}" alt=""
+                     style="width: 700px; height: 800px; padding-bottom: 30px "/>
             @endif
         </div>
 

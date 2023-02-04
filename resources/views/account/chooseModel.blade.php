@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -19,24 +19,25 @@
                     @foreach($photos as $photo )
                         @if($photo->photoable_id === 0)
 
-{{--                    {{( $photo= $photos->where('photoable_type','=', 'App\Models\\'.$model ))->first()}}--}}
-{{--                        @foreach($photos as $photo)--}}
+                            {{--                    {{( $photo= $photos->where('photoable_type','=', 'App\Models\\'.$model ))->first()}}--}}
+                            {{--                        @foreach($photos as $photo)--}}
 
 
-                        <div class="col">
-                            <div class="card shadow-sm"><a href="{{route('image.upload',['parameter'=>$photo->photoable_type])}}">
+                            <div class="col">
+                                <div class="card shadow-sm"><a
+                                            href="{{route('image.upload',['parameter'=>$photo->photoable_type])}}">
 
-                                    <img src="{{$photo->path}}" alt="" style="width: 421px; height: 648px "/>
-                                </a>
-                                <div class="card-body" style="text-align: center">
-                                    <p class="card-text">{{$photo->photoable_type}}</p>
-                                    <div class="d-flex justify-content-between align-items-center">
+                                        <img src="{{$photo->path}}" alt="" style="width: 421px; height: 648px "/>
+                                    </a>
+                                    <div class="card-body" style="text-align: center">
+                                        <p class="card-text">{{$photo->photoable_type}}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
+                        @endif
                     @endforeach
 
 

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -12,34 +12,35 @@
 
         <table class="table table-dark">
             @can('make a character in base')
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <a class="btn btn-success" href="{{ route('characters.create') }}">create</a>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <a class="btn btn-success" href="{{ route('characters.create') }}">create</a>
+                    </div>
+                    @endcan
                 </div>
-                @endcan
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <form action="{{ route('characters') }}" method="GET" role="search">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <form action="{{ route('characters') }}" method="GET" role="search">
 
-                        <input value="{{Request::get("term")}}" type="text" class="form-control-plaintext" name="term"
-                               placeholder="All of characters or type and search(Enter)" id="term">
+                            <input value="{{Request::get("term")}}" type="text" class="form-control-plaintext"
+                                   name="term"
+                                   placeholder="All of characters or type and search(Enter)" id="term">
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Homeworld</th>
-                <th>Kind</th>
-                <th>Starships</th>
-                <th>Vehicles</th>
-                <th>Films</th>
-                <th>Action</th>
-            </tr>
-            </thead>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Homeworld</th>
+                    <th>Kind</th>
+                    <th>Starships</th>
+                    <th>Vehicles</th>
+                    <th>Films</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
                 <tbody>
                 @foreach($characters as $character)
 
@@ -64,16 +65,16 @@
                             @endforeach</td>
                         <td>
                             <a class="btn btn-info" href="{{ route('characters.show',$character->id) }}"><i
-                                    class="fa-solid fa-face-grin-beam"></i></a>
+                                        class="fa-solid fa-face-grin-beam"></i></a>
                             @can('edit character in base')
                                 <form action="{{ route('characters.destroy',$character->id) }}" method="POST">
 
                                     <a class="btn btn-warning" href="{{ route('characters.edit',$character->id) }}"><i
-                                            class="fa-solid fa-user-pen"></i></a>
+                                                class="fa-solid fa-user-pen"></i></a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger"><i
-                                            class="fa-solid fa-person-falling-burst"></i></button>
+                                                class="fa-solid fa-person-falling-burst"></i></button>
                                 </form>
                             @endcan
 

@@ -1,13 +1,12 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="row">
 
         <div class="col-md-3 right-grid">
             @foreach($film->trailers as $trailer)
-                <iframe style="padding: 50px" width="800" height="500"src="{{$trailer->path}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
+                <iframe style="padding: 50px" width="800" height="500" src="{{$trailer->path}}" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
 
             @endforeach
             @foreach($film->photos as $photo)
@@ -23,9 +22,9 @@
         <div class="col-md-9 right-grid" style="text-align: right ">
             <div class="right-top">
 
-                <div class="right-bottom" >
+                <div class="right-bottom">
 
-                <h3><span>{{$film->title}}</span> -Episode{{$film->episode_id}}</h3>
+                    <h3><span>{{$film->title}}</span> -Episode{{$film->episode_id}}</h3>
 
                     <p>{{$film->opening_crawl}}</p>
 

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('content')
     <div class="about-section" id="aboutus"><!--King Of The North Section-->
 
@@ -27,7 +27,7 @@
                                     <input type="text" name="name" class="form-control">
                                     @if ($errors->has('name'))
                                         <span
-                                            class="text-danger">{{ $errors->first('name') }}</span>
+                                                class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                                            name="terrain">
                                     @if ($errors->has('terrain'))
                                         <span
-                                            class="text-danger">{{ $errors->first('terrain') }}</span>
+                                                class="text-danger">{{ $errors->first('terrain') }}</span>
                                     @endif
                                 </div>
                             </div>
