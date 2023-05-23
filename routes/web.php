@@ -77,6 +77,8 @@ Route::get('sign-in/facebook', [CustomAuthController::class, 'facebook'])->name(
 Route::get('sign-in/facebook/redirect', [CustomAuthController::class, 'facebookRedirect'])->name('login.facebookRedirect');
 Route::get('sign-in/twitter', [CustomAuthController::class, 'twitter'])->name('login.twitter');
 Route::get('sign-in/twitter/redirect', [CustomAuthController::class, 'twitterRedirect'])->name('login.twitterRedirect');
+Route::get('sign-in/slack', [CustomAuthController::class, 'slack'])->name('login.slack');
+Route::get('sign-in/slack/redirect', [CustomAuthController::class, 'slackRedirect'])->name('login.slackRedirect');
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');

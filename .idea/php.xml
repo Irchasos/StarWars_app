@@ -146,6 +146,9 @@
       <path value="$PROJECT_DIR$/vendor/mews/captcha" />
       <path value="$PROJECT_DIR$/vendor/biscolab/laravel-recaptcha" />
       <path value="$PROJECT_DIR$/vendor/haruncpi/laravel-simple-captcha" />
+      <path value="$PROJECT_DIR$/vendor/socialiteproviders/slack" />
+      <path value="$PROJECT_DIR$/vendor/socialiteproviders/manager" />
+      <path value="$PROJECT_DIR$/vendor/laravel/slack-notification-channel" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

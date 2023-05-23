@@ -19,8 +19,8 @@
                     @foreach($photos as $photo )
                         @if($photo->photoable_id === 0)
 
-                            {{--                    {{( $photo= $photos->where('photoable_type','=', 'App\Models\\'.$model ))->first()}}--}}
-                            {{--                        @foreach($photos as $photo)--}}
+                                                {{( $photo= $photos->where('photoable_type','=', 'App\Models\\'.$model ))->first()}}
+                                                    @foreach($photos as $photo)
 
 
                             <div class="col">
@@ -37,6 +37,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endforeach
                         @endif
                     @endforeach
 

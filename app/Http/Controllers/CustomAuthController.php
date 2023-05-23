@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -45,17 +47,8 @@ class CustomAuthController extends Controller
     }
 
 
-    public function customRegistration(Request $request)
+    public function customRegistration(RegisterUserRequest $request)
     {
-        $request->validate(
-            [
-                'name' => 'required',
-                'email' => 'required|email|unique:users',
-                'password' => 'required|min:6',
-                '_answer' => 'required | simple_captcha' ]);
-
-
-
         $data = $request->all();
         $check = $this->create($data);
         $check->assignRole('Corporal');
@@ -115,6 +108,7 @@ class CustomAuthController extends Controller
         return redirect('/index')->withSuccess('Signed in');;
 
     }
+
     public function google()
     {
         return Socialite::driver('google')->redirect();
@@ -136,6 +130,7 @@ class CustomAuthController extends Controller
         return redirect('/index')->withSuccess('Signed in');;
 
     }
+
     public function facebook()
     {
         return Socialite::driver('facebook')->redirect();
@@ -157,6 +152,7 @@ class CustomAuthController extends Controller
         return redirect('/index')->withSuccess('Signed in');;
 
     }
+
     public function twitter()
     {
         return Socialite::driver('twitter')->redirect();
@@ -164,7 +160,29 @@ class CustomAuthController extends Controller
 
     public function twitterRedirect()
     {
-        $user = Socialite::driver('twitter')->user();
+        $user = Socialite::driver('twitter')->user();dd($user);
+        $user = User::firstorCreate(
+            [
+                'email' => $user->email
+            ], [
+                'name' => $user->name,
+                'password' => Hash::make(Str::random(24))
+            ]
+        );
+        $user->assignRole('Corporal');
+        Auth::login($user, true);
+        return redirect('/index')->withSuccess('Signed in');;
+
+    }
+    public function slack()
+    {
+        return Socialite::driver('slack')->redirect();
+    }
+
+    public function slackRedirect()
+    {
+
+        $user = Socialite::driver('slack')->user();
         $user = User::firstorCreate(
             [
                 'email' => $user->email
@@ -179,10 +197,7 @@ class CustomAuthController extends Controller
 
     }
 
-
-
-
-    public function refreshCaptcha()
-    {
-        return response()->json(['captcha'=> captcha_img()]);}
 }
+
+
+

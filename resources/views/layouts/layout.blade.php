@@ -1,19 +1,22 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <title>{{ trans('mainpage.star_wars_app') }}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-          crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/43af320612.js" crossorigin="anonymous"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
-    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css" media="all">
+    {{--    <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    {{--    <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all">
+    {{--    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" media="all">
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{{asset('css/footer.css')}}" rel="stylesheet" type="text/css" media="all"/>
+    {{--    <link href="{{asset('css/swipebox.css')}}" rel="stylesheet" type="text/css" media="all"/>--}}
+    {{--    <link href="{{asset('css/choices.css')}}" rel="stylesheet" type="text/css" media="all"/>--}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -43,14 +46,17 @@
                     <li class=" dropdown" style="padding-bottom: 40px">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
-                            {{ Config::get('languages')[App::getLocale()]['display'] }}
+                            {{ Config::get('languages')[App::getLocale()]['display']  }}
+                            <i class="fas fa-{{ Config::get('languages')[App::getLocale()]['flag-icon']   }}   "></i>
                         </a>
                         <div class="dropdown-menu" style="background:transparent"
                              aria-labelledby="navbarDropdownMenuLink">
                             @foreach (Config::get('languages') as $lang => $language)
                                 @if ($lang != App::getLocale())
                                     <a href="{{
-    route('lang.switch', $lang) }}">{{$language['display']}}</a>
+    route('lang.switch', $lang) }}">{{$language['display']}}</a><i class="fas fa-{{$language['flag-icon']}}  fa-lg"
+                                                                   style="color: #941010;"></i>
+
                                 @endif
                             @endforeach
                         </div>
@@ -118,11 +124,11 @@
 <div class="content " style="margin-top: 20px"><!--Content Section-->
 
     @yield('content')
-    <div class="slider">
-        <iframe width="1200" height="800" src="https://www.youtube.com/embed/CmygQFhjaKM" title="YouTube video player"
-                frameborder="00"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+{{--    <div class="slider">--}}
+{{--        <iframe width="1200" height="800" src="https://www.youtube.com/embed/CmygQFhjaKM" title="YouTube video player"--}}
+{{--                frameborder="00"--}}
+{{--                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"--}}
+{{--                allowfullscreen></iframe>--}}
 
     </div>
 
@@ -149,5 +155,100 @@
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.js"></script>
 @include('sweetalert::alert')
+<footer class="footer-section">
+    <div class="container">
+        <div class="footer-cta pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fab fa-slack"></i>
+                        <div class="cta-text">
+                            <h4>Slack</h4>
+                            <span>Lorem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="fas fa-phone"></i>
+                        <div class="cta-text">
+                            <h4>Call</h4>
+                            <span>9876543210 0</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4 mb-30">
+                    <div class="single-cta">
+                        <i class="far fa-envelope-open"></i>
+                        <div class="cta-text">
+                            <h4>Mail </h4>
+                            <span>arkadiuszjanholub@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-content pt-5 pb-5">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 mb-50">
+                    <div class="footer-widget">
+
+                        <div class="footer-text">
+                            <p>W wolnych chwilach tworzę strony internetowe w oparciu o laravela.</p>
+                        </div>
+                        <div class="footer-social-icon">
+                            <span>Media</span>
+                            <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                            <a href="#"><i class="fab fa-slack twitter-bg"></i></a>
+                            <a href="#"><i class="fab fa-github google-bg"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Useful Links</h3>
+                        </div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Portfolio </a></li>
+                            <li><a href="#">Trelo</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Work in progress</a></li>
+                            <li><a href="#">About us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                    <div class="footer-widget">
+                        <div class="footer-widget-heading">
+                            <h3>Send messege to ours slack account</h3>
+                        </div>
+                        <div class="footer-text mb-25">
+                        </div>
+                        <div class="subscribe-form">
+                            <form action="#">
+                                <input type="text" placeholder="Message">
+                                <button><i class="fab fa-telegram-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+{{--                    <div class="copyright-text">--}}
+{{--                        <p>Copyright &copy; 2018, All Right Reserved <a href="https://codepen.io/anupkumar92/">Anup</a></p>--}}
+{{--                    </div>--}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

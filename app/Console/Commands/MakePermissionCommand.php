@@ -49,7 +49,7 @@ class MakePermissionCommand extends Command
         Permission::create(['name' => 'delete photo of items']);
 
         //set 3level of roles
-        Permission::create(['name' => 'slack typing']);
+        Permission::create(['name' => 'Socialite typing']);
         Permission::create(['name' => 'add permissions']);
         //set 4level of roles
         Permission::create(['name' => 'add roles']);

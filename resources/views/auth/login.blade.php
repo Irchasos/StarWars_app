@@ -43,7 +43,7 @@
                                         from <i class="fa-brands fa-facebook"></i></a>
                                     <a href="sign-in/twitter" type="submit" class="btn btn-dark btn-block">Try connect
                                         with <i class="fa-brands fa-twitter"></i></a>
-                                    <a href="sign-in/google" type="submit" class="btn btn-dark btn-block">Or use <i
+                                    <a href="sign-in/slack" type="submit" class="btn btn-dark btn-block">Or use <i
                                                 class="fa-brands fa-slack"></i></a>
                                 </div>
                             </form>

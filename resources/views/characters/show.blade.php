@@ -2,12 +2,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-3 right-grid">
+            {{dd($character)}}
             @if(file_exists($character->photos))
                 @foreach($character->photos as $photo)
                     <img src="{{$photo->path}}" alt=""
                          style="width: 800px; height: 800px; padding-bottom: 30px "/>
                 @endforeach
-            @else
+            @elseif(file_exists($placeholder))
                 <img src="{{url ($placeholder->path)}}" alt=""
                      style="width: 800px; height: 800px; padding-bottom: 30px "/>
             @endif

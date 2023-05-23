@@ -4,11 +4,11 @@ return [
 
     'en' => [
         'display' => 'English',
-        'flag-icon' => 'us'
+        'flag-icon' => 'flag-usa'
     ],
     'pl' => [
         'display' => 'Polish',
-        'flag-icon' => 'pl'
+        'flag-icon' => 'flag'
 
     ],
 ];

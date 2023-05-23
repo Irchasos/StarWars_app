@@ -12,7 +12,7 @@
                          style="width: 700px; height: 800px; padding-bottom: 30px "/>>
 
                 @endforeach
-            @else
+            @elseif(file_exists($placeholder))
                 <img src="{{url ($placeholder->path)}}" alt=""
                      style="width: 800px; height: 800px; padding-bottom: 30px "/>
             @endif
