@@ -1,90 +1,74 @@
 @extends('layouts.layout')
+
 @section('content')
     @can('pasport generate')
-        <div class="container" style="color: white">
+        <div class="container">
             <div class="form-body">
                 <div class="row">
-                    <div class="form-holder">
-                        <div class="form-content">
-                            <div class="form-items">
-                                <h3>Legay stay</h3>
-                                <p>Fill in the data below.</p>
-                                <form method="POST" action="{{ route('generatePassport') }}"
-                                      class="requires-validation">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title text-primary">Welcome to Legay Stay</h3>
+                                <p class="card-text text-secondary">Please fill in the required information below.</p>
+                                <form method="POST" action="{{ route('generatePassport') }}" class="requires-validation">
                                     @csrf
-                                    <div class="col-md-12">
-                                        <div class="col-md-12">
-                                            <select name="name" class="form-select mt-3" required>
-                                                <option selected disabled value="">Character</option>
-                                                @foreach( $characters as $character)
-                                                    <option
-                                                            value='{{$character->name}} Born {{$character->birth_year}} From {{$character->planet->name}} By {{$character->kind->name}}'>{{$character->name}}
-                                                        <button> Birth:{{$character->birth_year}}</button>
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            <br>
-                                            <div class="col-md-12">
-                                                <input class="form-control" type="text" name="text"
-                                                       placeholder="enter things that have not passed border control">
-                                                <div class="valid-feedback"></div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-12">
-                                            <select name="time" class="form-select mt-3" required>
-                                                <option selected disabled value="">Time of stay</option>
-                                                <option value="1">24h</option>
-                                                <option value="2">48h</option>
-                                                <option value="999999">Unlimited</option>
-                                            </select>
-                                            <div class="valid-feedback">You selected a time of legal stay</div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <select class="form-select mt-3" required name="planet">
-                                                <option selected disabled value="">Planet</option>
-                                                @foreach( $planets as $planet)
-                                                    <option value="{{$planet->name}}">{{$planet->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="valid-feedback">Planet for visit</div>
-                                        </div>
-
-
-                                        <div class="col-md-12 mt-3">
-                                            <label class="mb-3 mr-1" for="type">Type of visit: </label>
-
-                                            <input value="Tourist" type="radio" class="btn-check" name="type" id="male"
-                                                   autocomplete="off"
-                                                   required>
-                                            <label class="btn btn-sm btn-outline-secondary" for="male">Tourist</label>
-
-                                            <input value="Work" type="radio" class="btn-check" name="type" id="female"
-                                                   autocomplete="off"
-                                                   required>
-                                            <label class="btn btn-sm btn-outline-secondary" for="female">Work</label>
-
-                                            <input value="Politic" type="radio" class="btn-check" name="type"
-                                                   id="secret"
-                                                   autocomplete="off"
-                                                   required>
-                                            <label class="btn btn-sm btn-outline-secondary" for="secret">Politic</label>
-                                            <div class="valid-feedback mv-up">You selected a reason of visit</div>
-                                        </div>
-
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Select a Character</label>
+                                        <select name="name" class="form-select" required>
+                                            <option selected disabled value="">Select a Character</option>
+                                            @foreach( $characters as $character)
+                                                <option value='{{$character->name}} Born {{$character->birth_year}} From {{$character->planet->name}} By {{$character->kind->name}}'>
+                                                    {{$character->name}}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="text" class="form-label">Items that have not passed border control</label>
+                                        <input class="form-control" type="text" name="text" placeholder="Enter items that have not passed border control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="time" class="form-label">Select Time of Stay</label>
+                                        <select name="time" class="form-select" required>
+                                            <option selected disabled value="">Select Time of Stay</option>
+                                            <option value="1">24 hours</option>
+                                            <option value="2">48 hours</option>
+                                            <option value="999999">Unlimited</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="planet" class="form-label">Select a Planet</label>
+                                        <select class="form-select" required name="planet">
+                                            <option selected disabled value="">Select a Planet</option>
+                                            @foreach( $planets as $planet)
+                                                <option value="{{$planet->name}}">{{$planet->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Type of Visit:</label>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
-                                                   required>
-                                            <label class="form-check-label">I confirm that all data are correct</label>
-                                            <div class="invalid-feedback">You are rosponsible of make that data correct
-                                            </div>
+                                            <input value="Tourist" type="radio" class="form-check-input" name="type" id="male" autocomplete="off" required>
+                                            <label class="form-check-label" for="male">Tourist</label>
                                         </div>
-                                        <div class="form-button mt-3">
-                                            <button id="submit" type="submit" class="btn btn-primary">Register</button>
+                                        <div class="form-check">
+                                            <input value="Work" type="radio" class="form-check-input" name="type" id="female" autocomplete="off" required>
+                                            <label class="form-check-label" for="female">Work</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input value="Politic" type="radio" class="form-check-input" name="type" id="secret" autocomplete="off" required>
+                                            <label class="form-check-label" for="secret">Political</label>
                                         </div>
                                     </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                        <label class="form-check-label" for="invalidCheck">I confirm that all the provided data are correct</label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button id="submit" type="submit" class="btn btn-primary">Register</button>
+                                    </div>
                                     @if ($errors->any())
-                                        <div class="alert alert-danger">
+                                        <div class="alert alert-danger mt-3">
                                             <ul>
                                                 @foreach ($errors->all() as $error)
                                                     <li>{{ $error }}</li>
@@ -102,9 +86,9 @@
     @endcan
     @cannot('pasport generate')
         <div class="card">
-            <a a href="{{route('myAccount')}}" class="card-header text-center font-weight-bold">
-                <h2>Your range is too low</h2></a>
+            <a href="{{route('myAccount')}}" class="card-header text-center font-weight-bold text-danger">
+                <h2>Your Access Level is Too Low</h2>
+            </a>
         </div>
-
     @endcannot
 @endsection

@@ -1,4 +1,5 @@
 @extends('layouts.layout')
+
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -8,82 +9,90 @@
             @endphp
         </div>
     @endif
-    <div style="padding-left: 5px">
 
-        <table class="table table-dark">
-            @can('make a character in base')
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <a class="btn btn-success" href="{{ route('characters.create') }}">{{ trans('characters_views.create') }}</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>{{ trans('characters_views.characters_list') }}</h3>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                @can('make a character in base')
+                                    <a class="btn btn-success" href="{{ route('characters.create') }}">{{ trans('characters_views.create') }}</a>
+                                @endcan
+                            </div>
+                        </div>
                     </div>
-                    @endcan
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <form action="{{ route('characters') }}" method="GET" role="search">
-
-                            <input value="{{Request::get("term")}}" type="text" class="form-control-plaintext"
-                                   name="term"
-                                   placeholder="{{ trans('characters_views.all_of_characters_or_type_and_searchenter') }}" id="term">
-
-                        </form>
-                    </div>
-                </div>
-
-                <thead>
-                <tr>
-                    <th>{{ trans('characters_views.name') }}</th>
-                    <th>{{ trans('characters_views.homeworld2') }}</th>
-                    <th>{{ trans('characters_views.kind2') }}</th>
-                    <th>{{ trans('characters_views.starships') }}</th>
-                    <th>{{ trans('characters_views.vehicles') }}</th>
-                    <th>{{ trans('characters_views.films') }}</th>
-                    <th>{{ trans('characters_views.action') }}</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($characters as $character)
-
-                    <tr>
-
-                        <td>{{$character->name}} </td>
-                        <td><a href="planets/{{$character->planet->id}}">{{$character->planet->name}}</a></td>
-                        <td><a href="kinds/{{$character->kind->id}}">{{$character->kind->name}}</a></td>
-                        <td>  @foreach($character->starships as $starship)
-                                <a href="starships/{{$starship->id}}">{{$starship->name}}</a>
-
-                            @endforeach
-                        </td>
-                        <td>  @foreach($character->vehicles as $vehicle)
-                                <a href="vehicles/{{$vehicle->id}}">{{$vehicle->name}}</a>
-
-                            @endforeach
-                        </td>
-                        <td> @foreach($character->films as $film)
-                                <a href="films/{{$film->id}}">{{$film->title}}</a>
-
-                            @endforeach</td>
-                        <td>
-                            <a class="btn btn-info" href="{{ route('characters.show',$character->id) }}"><i
-                                        class="fa-solid fa-face-grin-beam"></i></a>
-                            @can('edit character in base')
-                                <form action="{{ route('characters.destroy',$character->id) }}" method="POST">
-
-                                    <a class="btn btn-warning" href="{{ route('characters.edit',$character->id) }}"><i
-                                                class="fa-solid fa-user-pen"></i></a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"><i
-                                                class="fa-solid fa-person-falling-burst"></i></button>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form action="{{ route('characters') }}" method="GET" role="search">
+                                    <div class="input-group mb-3">
+                                        <input value="{{Request::get("term")}}" type="text" class="form-control" name="term" placeholder="{{ trans('characters_views.all_of_characters_or_type_and_searchenter') }}" id="term">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">{{ trans('characters_views.search') }}</button>
+                                        </div>
+                                    </div>
                                 </form>
-                            @endcan
+                            </div>
+                        </div>
 
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-        </table>
-        {{ $characters->links() }}
+                        <table class="table table-striped table-dark">
+                            <thead>
+                            <tr>
+                                <th>{{ trans('characters_views.name') }}</th>
+                                <th>{{ trans('characters_views.homeworld2') }}</th>
+                                <th>{{ trans('characters_views.kind2') }}</th>
+                                <th>{{ trans('characters_views.starships') }}</th>
+                                <th>{{ trans('characters_views.vehicles') }}</th>
+                                <th>{{ trans('characters_views.films') }}</th>
+                                <th>{{ trans('characters_views.action') }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($characters as $character)
+                                <tr>
+                                    <td>{{$character->name}} </td>
+                                    <td><a href="planets/{{$character->planet->id}}">{{$character->planet->name}}</a></td>
+                                    <td><a href="kinds/{{$character->kind->id}}">{{$character->kind->name}}</a></td>
+                                    <td>
+                                        @foreach($character->starships as $starship)
+                                            <a href="starships/{{$starship->id}}">{{$starship->name}}</a>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($character->vehicles as $vehicle)
+                                            <a href="vehicles/{{$vehicle->id}}">{{$vehicle->name}}</a>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach($character->films as $film)
+                                            <a href="films/{{$film->id}}">{{$film->title}}</a>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-info" href="{{ route('characters.show',$character->id) }}"><i class="fa-solid fa-face-grin-beam"></i></a>
+                                        @can('edit character in base')
+                                            <form action="{{ route('characters.destroy',$character->id) }}" method="POST">
+                                                <a class="btn btn-warning" href="{{ route('characters.edit',$character->id) }}"><i class="fa-solid fa-user-pen"></i></a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-person-falling-burst"></i></button>
+                                            </form>
+                                        @endcan
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
 
+                        {{ $characters->links() }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

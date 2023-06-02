@@ -50,6 +50,8 @@ class ProjectsLocationsDataScans extends \Google\Service\Resource
    * lowercase letters, numbers and hyphens. Must start with a letter. Must end
    * with a number or a letter. Must be between 1-63 characters. Must be unique
    * within the customer project / location.
+   * @opt_param bool validateOnly Optional. Only validate the request, but do not
+   * perform mutations. The default is false.
    * @return GoogleLongrunningOperation
    */
   public function create($parent, GoogleCloudDataplexV1DataScan $postBody, $optParams = [])
@@ -134,7 +136,7 @@ class ProjectsLocationsDataScans extends \Google\Service\Resource
    * @opt_param string orderBy Optional. Order by fields (name or create_time) for
    * the result. If not specified, the ordering is undefined.
    * @opt_param int pageSize Optional. Maximum number of dataScans to return. The
-   * service may return fewer than this value. If unspecified, at most 10 scans
+   * service may return fewer than this value. If unspecified, at most 500 scans
    * will be returned. The maximum value is 1000; values above 1000 will be
    * coerced to 1000.
    * @opt_param string pageToken Optional. Page token received from a previous
@@ -160,6 +162,8 @@ class ProjectsLocationsDataScans extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask Required. Mask of fields to update.
+   * @opt_param bool validateOnly Optional. Only validate the request, but do not
+   * perform mutations. The default is false.
    * @return GoogleLongrunningOperation
    */
   public function patch($name, GoogleCloudDataplexV1DataScan $postBody, $optParams = [])

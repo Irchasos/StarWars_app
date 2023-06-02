@@ -1,11 +1,11 @@
 <?php
 return [
-    "account_menu" => "Menu konta",
+    "account_menu" => "Zarządzaj",
     "add_photo" => "Dodaj zdjęcie",
     "cancel_photo" => "Wycofaj zdjęcie",
     "characters" => "Postacie",
     "films" => "Filmy",
-    "home" => "Strona główna",
+    "home" => "Start",
     "kinds" => "Gatunki",
     "login" => "Zaloguj Się",
     "logout" => "Wyloguj",

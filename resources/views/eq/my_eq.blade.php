@@ -25,36 +25,49 @@
 
                     <table class="table table-bordered table-dark">
                         <thead>
-                        <h3> {{$user->name}} with rank @foreach ($user->roles as $role)
+                        <h3> {{$user->name}}{{$user->credits}} with rank @foreach ($user->roles as $role)
                                 {{$role->name}}
                             @endforeach</h3>
 
                         <h3> My Equipment </h3>
 
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Helmet</th>
-                            <th scope="col">Chest Plate</th>
-                            <th scope="col">Ammo Belt</th>
-                            <th scope="col">Boots</th>
-                            <th scope="col">Holster</th>
+
+                            <th scope="col">Armor</th>
+                            <th scope="col">LightSaber</th>
+                            <th scope="col">CQC</th>
+                            <th scope="col">Ordnance</th>
+                            <th scope="col">Guns</th>
                             <th scope="col">Weapon</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
-                        </tr>
+                        @foreach($user->equipment as $item)
+                            <tr>
+
+
+                                @if($item->type =='Armor')
+                                    <td>{{$item->name}}</td>
+                                @endif
+                                @if($item->type =='LightSaber')
+                                    <td>{{$item->name}}</td>
+                                @endif
+                                @if($item->type =='CQC')
+                                    <td>{{$item->name}}</td>
+                                @endif
+                                @if($item->type =='Ordnance')
+                                    <td>{{$item->name}}</td>
+                                @endif
+                                @if($item->type =='Weapon')
+                                    <td>{{$item->name}}</td>
+                                @endif
+                            </tr>
+                        @endforeach
+
 
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-lg btn-outline-success">Buy Equipment</button>
+                    <a type="button" href="{{ route('store') }}"class="btn btn-lg btn-outline-success">Buy Equipment</a>
                 </div>
             </div>
             <div class="clearfix"></div>

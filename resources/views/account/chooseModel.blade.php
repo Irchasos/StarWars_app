@@ -17,12 +17,14 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
                     @foreach($photos as $photo )
-                        @if($photo->photoable_id === 0)
-
-                                                {{( $photo= $photos->where('photoable_type','=', 'App\Models\\'.$model ))->first()}}
-                                                    @foreach($photos as $photo)
 
 
+
+
+
+
+
+                                @if($photo->photoable_id === 0)
                             <div class="col">
                                 <div class="card shadow-sm"><a
                                             href="{{route('image.upload',['parameter'=>$photo->photoable_type])}}">
@@ -37,8 +39,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-                        @endif
+                                @endif
+
+
                     @endforeach
 
 

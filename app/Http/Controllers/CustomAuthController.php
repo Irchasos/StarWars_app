@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
-
+use App\Notifications\SlackMessageNotification;
 use Illuminate\Support\Str;
 
 class CustomAuthController extends Controller
@@ -196,6 +196,17 @@ class CustomAuthController extends Controller
         return redirect('/index')->withSuccess('Signed in');;
 
     }
+    public function sendSlackMessage(Request $request)
+    {
+        $message = $request->input('message');
+
+        Notification::route('slack', config('services.slack.webhook_url'))
+            ->notify(new SlackMessageNotification($message));
+
+        // Możesz dodać odpowiednie przekierowanie lub zwrócić odpowiedź w przypadku sukcesu
+
+    }
+
 
 }
 

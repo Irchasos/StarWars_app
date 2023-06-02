@@ -10,6 +10,12 @@
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
     {{--    <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
     {{--    <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    <link   <script src="https://kit.fontawesome.com/43af320612.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
+    {{--    <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    {{--    <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css" media="all">--}}
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all">
     {{--    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
     <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" media="all">
@@ -38,24 +44,38 @@
 </head>
 <body><!--Body start-->
 <div class="header" id="head">
+
     <div class="header-top">
+        <a class="navbar-brand" href="#">
+            <img src="{{ asset('storage/other/Dev logo.jpg') }}" alt="Dev Logo" style="width: 115px; height: 100px;">
+
+        </a>
         <div class="container">
 
+
             <div class="top-menu">
+                <audio style="float: right;" controls autoplay loop>
+                    <source src="{{ asset('storage/other/entrymusic.mp3') }}" type="audio/mp3">
+                    Twoja przeglądarka nie obsługuje elementu audio.
+                </audio>
                 <ul>
+
                     <li class=" dropdown" style="padding-bottom: 40px">
+
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             {{ Config::get('languages')[App::getLocale()]['display']  }}
                             <i class="fas fa-{{ Config::get('languages')[App::getLocale()]['flag-icon']   }}   "></i>
                         </a>
+
                         <div class="dropdown-menu" style="background:transparent"
                              aria-labelledby="navbarDropdownMenuLink">
+
                             @foreach (Config::get('languages') as $lang => $language)
                                 @if ($lang != App::getLocale())
                                     <a href="{{
-    route('lang.switch', $lang) }}">{{$language['display']}}</a><i class="fas fa-{{$language['flag-icon']}}  fa-lg"
-                                                                   style="color: #941010;"></i>
+        route('lang.switch', $lang) }}">{{$language['display']}}</a><i class="fas fa-{{$language['flag-icon']}}  fa-lg"
+                                                                       style="color: #941010;"></i>
 
                                 @endif
                             @endforeach
@@ -90,20 +110,27 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ trans('mainpage.account_menu') }}
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-
-                            <a class="dropdown-item" href=" {{ route('myAccount') }}"><i
-                                        class="fa-solid fa-user"> {{ trans('mainpage.my_account') }}</i></a>
-                            <a class="dropdown-item" href=" {{ route('passport') }}"><i class="fa-solid fa-file-pdf">
-                                    {{ trans('mainpage.passport') }}</i></a>
-                            <a class="dropdown-item" href=" {{ route('image.choose') }}"><i class="fa-solid fa-images">
-                                    {{ trans('mainpage.add_photo') }}</i></a>
-                            <a class="dropdown-item" href=" {{ route('image.cancel') }}"><i
-                                        class="fa-solid fa-folder-minus"> {{ trans('mainpage.cancel_photo') }}</i></a>
-                            <a class="dropdown-item" href=" {{ route('signout') }}"><i class="fa-solid fa-lock">
-                                    {{ trans('mainpage.logout') }}</i></a>
+                        <div class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('myAccount') }}">
+                                <i class="fa-solid fa-user"></i> {{ trans('mainpage.my_account') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('myEq') }}">
+                                <i class="fa-solid fa-user"></i> {{ trans('mainpage.Equipment') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('passport') }}">
+                                <i class="fa-solid fa-file-pdf"></i> {{ trans('mainpage.passport') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('image.choose') }}">
+                                <i class="fa-solid fa-images"></i> {{ trans('mainpage.add_photo') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('image.cancel') }}">
+                                <i class="fa-solid fa-folder-minus"></i> {{ trans('mainpage.cancel_photo') }}
+                            </a>
+                            <a class="dropdown-item" href="{{ route('signout') }}">
+                                <i class="fa-solid fa-lock"></i> {{ trans('mainpage.logout') }}
+                            </a>
                         </div>
+
                     @endguest
 
 
@@ -124,11 +151,11 @@
 <div class="content " style="margin-top: 20px"><!--Content Section-->
 
     @yield('content')
-{{--    <div class="slider">--}}
-{{--        <iframe width="1200" height="800" src="https://www.youtube.com/embed/CmygQFhjaKM" title="YouTube video player"--}}
-{{--                frameborder="00"--}}
-{{--                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"--}}
-{{--                allowfullscreen></iframe>--}}
+    <div class="slider">
+        <iframe width="1200" height="800" src="https://www.youtube.com/embed/CmygQFhjaKM" title="YouTube video player"
+                frameborder="00"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
 
     </div>
 
@@ -219,21 +246,25 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
-                    <div class="footer-widget">
-                        <div class="footer-widget-heading">
-                            <h3>Send messege to ours slack account</h3>
-                        </div>
-                        <div class="footer-text mb-25">
-                        </div>
-                        <div class="subscribe-form">
-                            <form action="#">
-                                <input type="text" placeholder="Message">
-                                <button><i class="fab fa-telegram-plane"></i></button>
-                            </form>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                        <div class="footer-widget">
+                            <div class="footer-widget-heading">
+                                <h3>Send messege to ours slack account</h3>
+                            </div>
+                            <div class="footer-text mb-25">
+                            </div>
+                            <div class="subscribe-form">
+                                <form action="{{ route('sendSlackMessage') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="message" placeholder="Message">
+                                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                                </form>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -241,14 +272,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 text-center text-lg-left">
-{{--                    <div class="copyright-text">--}}
-{{--                        <p>Copyright &copy; 2018, All Right Reserved <a href="https://codepen.io/anupkumar92/">Anup</a></p>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="copyright-text">--}}
+                    {{--                        <p>Copyright &copy; 2018, All Right Reserved <a href="https://codepen.io/anupkumar92/">Anup</a></p>--}}
+                    {{--                    </div>--}}
                 </div>
 
             </div>
         </div>
     </div>
 </footer>
+
 </body>
 </html>

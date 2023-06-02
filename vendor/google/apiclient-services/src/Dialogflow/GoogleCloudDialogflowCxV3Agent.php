@@ -22,7 +22,6 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
   protected $collection_key = 'supportedLanguageCodes';
   protected $advancedSettingsType = GoogleCloudDialogflowCxV3AdvancedSettings::class;
   protected $advancedSettingsDataType = '';
-  public $advancedSettings;
   /**
    * @var string
    */
@@ -61,7 +60,6 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
   public $securitySettings;
   protected $speechToTextSettingsType = GoogleCloudDialogflowCxV3SpeechToTextSettings::class;
   protected $speechToTextSettingsDataType = '';
-  public $speechToTextSettings;
   /**
    * @var string
    */
@@ -70,6 +68,8 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
    * @var string[]
    */
   public $supportedLanguageCodes;
+  protected $textToSpeechSettingsType = GoogleCloudDialogflowCxV3TextToSpeechSettings::class;
+  protected $textToSpeechSettingsDataType = '';
   /**
    * @var string
    */
@@ -256,6 +256,20 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
   public function getSupportedLanguageCodes()
   {
     return $this->supportedLanguageCodes;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3TextToSpeechSettings
+   */
+  public function setTextToSpeechSettings(GoogleCloudDialogflowCxV3TextToSpeechSettings $textToSpeechSettings)
+  {
+    $this->textToSpeechSettings = $textToSpeechSettings;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3TextToSpeechSettings
+   */
+  public function getTextToSpeechSettings()
+  {
+    return $this->textToSpeechSettings;
   }
   /**
    * @param string

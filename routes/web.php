@@ -98,5 +98,10 @@ Route::DELETE('/photos/{photo}', [AccountController::class, 'destroy'])->name('i
 
 //EQ
 Route::get('my-eq', [EqController::class, 'myEq'])->name('myEq')->middleware('auth');
+Route::get('store', [EqController::class, 'store'])->name('store')->middleware('auth');
 
 Route::get('refresh_captcha', 'HomeController@refreshCaptcha')->name('refresh_captcha');
+Route::post('/send-slack-message', [CustomAuthController::class, 'SendSlackMessage'])->name('sendSlackMessage');
+
+
+

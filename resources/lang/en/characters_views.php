@@ -2,11 +2,12 @@
 return [
     "action" => "Action",
     "all_of_characters_or_type_and_searchenter" => "All of characters or type and search(Enter)",
+    "characters_list" => "List of characters",
     "before" => "before",
     "birth" => "Birth:",
     "create" => "create",
     "detail_of_character" => "details of character",
-    "details_of_character" => "Details of Character",
+    "search" => "Search",
     "edit" => "edit",
     "eye_color" => "Eye Color:",
     "films" => "Films",

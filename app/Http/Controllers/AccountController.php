@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -10,9 +11,9 @@ use App\Models\Photo;
 use App\Models\Planet;
 use App\Models\User;
 use App\Services\CharacterService;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -32,115 +33,102 @@ class AccountController extends Controller
         $this->service = $service;
     }
 
-    public function myAccount()
+    public function myAccount(): View
     {
         $user = Auth::user();
-
-
         $permissions = $user->getPermissionsViaRoles();
 
-        return view('account.profile')
-            ->with('user', $user)
-            ->with('permissions', $permissions);
-
-
+        return view('account.profile', [
+            'user' => $user,
+            'permissions' => $permissions
+        ]);
     }
 
     public function avatarUpload()
     {
+        // Implementacja
     }
 
     public function avatarUploaded(Request $request)
     {
-
         $validatedData = $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-
         ]);
 
-
         $file = $request->file('image');
-        $extention = $file->getClientOriginalExtension();
-        $name = "public/avatars_images/" . Uuid::uuid4() . ".$extention";
+        $extension = $file->getClientOriginalExtension();
+        $name = "public/avatars_images/" . Uuid::uuid4() . ".$extension";
 
         Storage::put($name, $file->get());
         $url = Storage::url($name);
 
         User::whereId(auth()->user()->id)->update(['avatar' => $url]);
 
-        return back()->with('success', 'Photo Uploaded');
+        return back()->with('success', 'Photo uploaded');
     }
 
     public function changeData(Request $request)
     {
         User::whereId(auth()->user()->id)->update([
-            'name' => ($request->new_name),
+            'name' => $request->new_name,
             'password' => Hash::make($request->new_password)
         ]);
     }
 
-    public function passport()
+    public function passport(): View
     {
         $characters = Character::all();
         $planets = Planet::all();
 
-        return view('account.passport')
-            ->with('characters', $characters)
-            ->with('planets', $planets);
-
+        return view('account.passport', [
+            'characters' => $characters,
+            'planets' => $planets
+        ]);
     }
 
     public function generatePassport(PassportCharacterRequest $request): Response
     {
-
         $data = [
             'auth' => Auth::user(),
             'request' => $request,
             'date' => Carbon::now()->format('d-m-Y'),
             'now' => Carbon::now(),
-            'date2' => Carbon::now()->addDays($request->time),
-
-
+            'date2' => Carbon::now()->addDays($request->time)
         ];
-
 
         return PDF::loadView('myPDF', $data)->download('itsolutionstuff.pdf');
     }
 
-    public function chooseModel()
+    public function chooseModel(): View
     {
-
         $photos = Photo::all();
 
-
-        return view('account.chooseModel')->with('photos', $photos);
+        return view('account.chooseModel', [
+            'photos' => $photos
+        ]);
     }
 
     public function imageUpload()
     {
-        $model = (Request()->parameter);
+        $model = Request()->parameter;
         $namespace = 'App\Models\\' . $model;
         $records = app()->make($namespace)->all();
-        return view('account.imageUpload')->with('model', $model)->with('records', $records);
+
+        return view('account.imageUpload', [
+            'model' => $model,
+            'records' => $records
+        ]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Application|RedirectResponse|Response|Redirector
-     */
     public function imageUploaded(Request $request)
     {
-
         $validatedData = $request->validate([
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-
         ]);
 
-
         $file = $request->file('image');
-        $extention = $file->getClientOriginalExtension();
-        $name = "public/characters_images/" . Uuid::uuid4() . ".$extention";
+        $extension = $file->getClientOriginalExtension();
+        $name = "public/characters_images/" . Uuid::uuid4() . ".$extension";
 
         Storage::put($name, $file->get());
         $url = Storage::url($name);
@@ -151,35 +139,33 @@ class AccountController extends Controller
         $save->path = $url;
         $save->save();
 
-        return back()->with('success', 'Photo Uploaded');
+        return back()->with('success', 'Photo uploaded');
     }
 
-    public function imageCancel()
+    public function imageCancel(): View
     {
         $photos = Photo::all();
-        return view('account.imageCancel')->with('photos', $photos);
+
+        return view('account.imageCancel', [
+            'photos' => $photos
+        ]);
     }
 
     public function destroy(Photo $photo): RedirectResponse
     {
-
         Photo::destroy($photo->id);
-
 
         return redirect(route('image.cancel'))->with('success', 'Photo deleted successfully.');
     }
 
-    public function reports()
+    public function reports(): View
     {
         $user = Auth::user();
-
         $messages = DB::table('message_to_boss')->where('boss_id', '=', $user->id)->get();
 
-
-        return view('account.reports')
-            ->with('user', $user)
-            ->with('messages', $messages);
-
+        return view('account.reports', [
+            'user' => $user,
+            'messages' => $messages
+        ]);
     }
-
 }

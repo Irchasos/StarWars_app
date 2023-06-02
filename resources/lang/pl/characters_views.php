@@ -28,5 +28,8 @@ return [
     "starships_list" => "lista statków kosmicznych",
     "submit" => "Zatwierdź",
     "vehicles" => "Pojazdy",
-    "view_all_characters" => "Zobacz wszystkie postacie"
+    "view_all_characters" => "Zobacz wszystkie postacie",
+    "search" => "Przeszukaj",
+    "characters_list" => "Baza postaci",
+
 ];

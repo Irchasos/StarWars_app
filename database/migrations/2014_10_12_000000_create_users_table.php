@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('avatar')->nullable();
+            $table->integer('credits')->nullable();
         }
         );
     }

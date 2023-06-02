@@ -1,4 +1,5 @@
 @extends('layouts.layout')
+
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -8,10 +9,12 @@
             @endphp
         </div>
     @endif
+
+    @can('make a character in base')
+        <a class="btn btn-success" href="{{ route('planets.create') }}">{{ trans('planets_views.create') }}</a>
+    @endcan
+
     <table class="table table-dark">
-        @can('make a character in base')
-            <a class="btn btn-success" href="{{ route('planets.create') }}">{{ trans('planets_views.create') }}</a>
-        @endcan
         <thead>
         <tr>
             <th>{{ trans('planets_views.name') }}</th>
@@ -31,8 +34,6 @@
                     @can('edit character in base')
                         <form action="{{ route('planets.destroy',$planet->id) }}" method="POST">
                             <a class="btn btn-primary" href="{{ route('planets.edit',$planet->id) }}">{{ trans('planets_views.edit') }}</a>
-
-
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">{{ trans('planets_views.delete') }}</button>
