@@ -25,26 +25,41 @@ class CharactersController extends Controller
         $this->service = $service;
     }
 
-    public function index(Request $request): view
+    public function index(Request $request)
     {
         Debugbar::info($request);
 
-        $characters = Character::where(
-            [
-                ['name', '!=', null],
-                [function ($query) use ($request) {
-                    /**
-                     * @noinspection PhpUndefinedFieldInspection
-                     */
-                    if (($term = $request->term)) {
-                        $query->orWhere('name', 'LIKE', '%' . $term . '%')->get();
-                    }
-                }]
-            ]
-        )->orderBy("id", "asc")->paginate(15);
+        $term = $request->query('term');
+        $homeworldTerm = $request->query('homeworld');
 
-        return view('characters.index', compact('characters'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $charactersQuery = Character::query()
+            ->where('name', '!=', null);
+
+        if ($term) {
+            $charactersQuery->where('name', 'LIKE', '%' . $term . '%');
+        }
+
+        if ($homeworldTerm) {
+            $charactersQuery->orWhereHas('planet', function ($query) use ($homeworldTerm) {
+                $query->where('name', 'LIKE', '%' . $homeworldTerm . '%');
+            });
+        }
+
+        $offset = ($request->input('page', 1) - 1) * 15;
+        $limit = 15;
+
+        $characters = $charactersQuery->orderBy('id', 'asc')
+            ->skip($offset)
+            ->take($limit)
+            ->paginate(15);
+
+        return view('characters.index', compact('characters'))->with('i', $offset);
     }
+
+
+
+
+
 
     public function create(): view
     {

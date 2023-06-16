@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use App\Notifications\SlackMessageNotification;
@@ -53,8 +54,9 @@ class CustomAuthController extends Controller
         $check = $this->create($data);
         $check->assignRole('Corporal');
         $check->givePermissionTo('add photo to items');
-
+        alert()->flash('Welcome back!', 'success');
         return redirect("/index")->withSuccess('You have signed-in');
+
     }
 
     public function create(array $data)
@@ -203,7 +205,7 @@ class CustomAuthController extends Controller
         Notification::route('slack', config('services.slack.webhook_url'))
             ->notify(new SlackMessageNotification($message));
 
-        // Możesz dodać odpowiednie przekierowanie lub zwrócić odpowiedź w przypadku sukcesu
+        return redirect('/index')->with('success', 'Message sent');
 
     }
 

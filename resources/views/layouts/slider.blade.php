@@ -1,11 +1,12 @@
-@extends('layouts.layout')
-@section('slider')
+@if(Route::currentRouteName() === 'index')
     <div class="slider">
-        <iframe width="1200" height="800" src="https://www.youtube.com/embed/CmygQFhjaKM" title="YouTube video player"
-                frameborder="00"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-
+        <div class="row">
+            <div class="col-12">
+                <iframe width="100%" height="400" src="https://www.youtube.com/embed/CmygQFhjaKM" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
-
-@endsection
+@endif

@@ -2,8 +2,6 @@
 
 namespace Illuminate\Database;
 
-use Doctrine\DBAL\Driver\PDOMySql\Driver as DoctrineDriver;
-use Doctrine\DBAL\Version;
 use Illuminate\Database\PDO\MySqlDriver;
 use Illuminate\Database\Query\Grammars\MySqlGrammar as QueryGrammar;
 use Illuminate\Database\Query\Processors\MySqlProcessor;
@@ -16,13 +14,26 @@ use PDO;
 class MySqlConnection extends Connection
 {
     /**
+     * Escape a binary value for safe SQL embedding.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    protected function escapeBinary($value)
+    {
+        $hex = bin2hex($value);
+
+        return "x'{$hex}'";
+    }
+
+    /**
      * Determine if the connected database is a MariaDB database.
      *
      * @return bool
      */
     public function isMaria()
     {
-        return strpos($this->getPdo()->getAttribute(PDO::ATTR_SERVER_VERSION), 'MariaDB') !== false;
+        return str_contains($this->getPdo()->getAttribute(PDO::ATTR_SERVER_VERSION), 'MariaDB');
     }
 
     /**
@@ -32,7 +43,9 @@ class MySqlConnection extends Connection
      */
     protected function getDefaultQueryGrammar()
     {
-        return $this->withTablePrefix(new QueryGrammar);
+        ($grammar = new QueryGrammar)->setConnection($this);
+
+        return $this->withTablePrefix($grammar);
     }
 
     /**
@@ -56,7 +69,9 @@ class MySqlConnection extends Connection
      */
     protected function getDefaultSchemaGrammar()
     {
-        return $this->withTablePrefix(new SchemaGrammar);
+        ($grammar = new SchemaGrammar)->setConnection($this);
+
+        return $this->withTablePrefix($grammar);
     }
 
     /**
@@ -84,10 +99,10 @@ class MySqlConnection extends Connection
     /**
      * Get the Doctrine DBAL driver.
      *
-     * @return \Doctrine\DBAL\Driver\PDOMySql\Driver|\Illuminate\Database\PDO\MySqlDriver
+     * @return \Illuminate\Database\PDO\MySqlDriver
      */
     protected function getDoctrineDriver()
     {
-        return class_exists(Version::class) ? new DoctrineDriver : new MySqlDriver;
+        return new MySqlDriver;
     }
 }

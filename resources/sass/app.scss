@@ -1,9 +1,8 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.bunny.net/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
-
-@import '~flag-icon-css/sass/flag-icons';
-@import "/node_modules/flag-icons/css/flag-icons.min.css";
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';

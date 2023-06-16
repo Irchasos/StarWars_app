@@ -23,6 +23,10 @@ class SpellResult extends \Google\Model
    * @var string
    */
   public $suggestedQuery;
+  /**
+   * @var string
+   */
+  public $suggestionType;
 
   /**
    * @param string
@@ -37,6 +41,20 @@ class SpellResult extends \Google\Model
   public function getSuggestedQuery()
   {
     return $this->suggestedQuery;
+  }
+  /**
+   * @param string
+   */
+  public function setSuggestionType($suggestionType)
+  {
+    $this->suggestionType = $suggestionType;
+  }
+  /**
+   * @return string
+   */
+  public function getSuggestionType()
+  {
+    return $this->suggestionType;
   }
 }
 

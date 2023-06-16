@@ -31,12 +31,14 @@
                             <div class="col-md-6">
                                 <form action="{{ route('characters') }}" method="GET" role="search">
                                     <div class="input-group mb-3">
-                                        <input value="{{Request::get("term")}}" type="text" class="form-control" name="term" placeholder="{{ trans('characters_views.all_of_characters_or_type_and_searchenter') }}" id="term">
+                                        <input value="{{ Request::get('term') }}" type="text" class="form-control" name="term" placeholder="{{ trans('characters_views.all_of_characters_or_type_and_searchenter') }}" id="term">
+                                        <input value="{{ Request::get('homeworld') }}" type="text" class="form-control" name="homeworld" placeholder="{{ trans('characters_views.homeworld') }}" id="homeworld">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="submit">{{ trans('characters_views.search') }}</button>
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
 

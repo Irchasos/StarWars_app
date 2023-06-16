@@ -15,5 +15,20 @@ return [
     "register" => "Register",
     "star_wars_app" => "Star Wars App",
     "starships" => "Starships",
-    "vehicles" => "Vehicles"
+    "vehicles" => "Vehicles",
+    "equipment" => "Equipment",
+    'slack' => 'Slack',
+    'call' => 'Call',
+    'mail' => 'Mail',
+    'about' => 'In my free time, I create websites using Laravel',
+    'media' => 'Media',
+    'useful_links' => 'Useful Links',
+    'home' => 'Home',
+    'portfolio' => 'Portfolio',
+    'invoice' => 'Invoice',
+    'trello' => 'Trello',
+    'storage' => 'Storage',
+    'blog' => 'Blog',
+    'Messege' => 'Send Message to Our Slack Account',
+    'message' => 'Message'
 ];

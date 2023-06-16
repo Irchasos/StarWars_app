@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CharactersController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\EqController;
@@ -98,10 +99,15 @@ Route::DELETE('/photos/{photo}', [AccountController::class, 'destroy'])->name('i
 
 //EQ
 Route::get('my-eq', [EqController::class, 'myEq'])->name('myEq')->middleware('auth');
-Route::get('store', [EqController::class, 'store'])->name('store')->middleware('auth');
+Route::get('store', [CartController::class, 'index'])->name('store.index')->middleware('auth');
+Route::post('cart/{productId}', [CartController::class, 'addToCart'])->name('store.cart')->middleware('auth');
+
+
 
 Route::get('refresh_captcha', 'HomeController@refreshCaptcha')->name('refresh_captcha');
 Route::post('/send-slack-message', [CustomAuthController::class, 'SendSlackMessage'])->name('sendSlackMessage');
+
+
 
 
 

@@ -33,24 +33,6 @@
       'ReCaptcha' => 'Biscolab\\ReCaptcha\\Facades\\ReCaptcha',
     ),
   ),
-  'facade/ignition' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
-    ),
-  ),
-  'fruitcake/laravel-cors' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    ),
-  ),
   'haruncpi/laravel-simple-captcha' => 
   array (
     'providers' => 
@@ -58,15 +40,15 @@
       0 => 'Haruncpi\\LaravelSimpleCaptcha\\ServiceProvider',
     ),
   ),
-  'intervention/image' => 
+  'jackiedo/cart' => 
   array (
     'providers' => 
     array (
-      0 => 'Intervention\\Image\\ImageServiceProvider',
+      0 => 'Jackiedo\\Cart\\CartServiceProvider',
     ),
     'aliases' => 
     array (
-      'Image' => 'Intervention\\Image\\Facades\\Image',
+      'Cart' => 'Jackiedo\\Cart\\Facades\\Cart',
     ),
   ),
   'laravel/sail' => 
@@ -81,6 +63,13 @@
     'providers' => 
     array (
       0 => 'Laravel\\Sanctum\\SanctumServiceProvider',
+    ),
+  ),
+  'laravel/scout' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Scout\\ScoutServiceProvider',
     ),
   ),
   'laravel/slack-notification-channel' => 
@@ -115,15 +104,15 @@
       0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
-  'mews/captcha' => 
+  'livewire/livewire' => 
   array (
     'providers' => 
     array (
-      0 => 'Mews\\Captcha\\CaptchaServiceProvider',
+      0 => 'Livewire\\LivewireServiceProvider',
     ),
     'aliases' => 
     array (
-      'Captcha' => 'Mews\\Captcha\\Facades\\Captcha',
+      'Livewire' => 'Livewire\\Livewire',
     ),
   ),
   'nesbot/carbon' => 
@@ -140,6 +129,13 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'nunomaduro/termwind' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    ),
+  ),
   'realrashid/sweet-alert' => 
   array (
     'providers' => 
@@ -149,13 +145,6 @@
     'aliases' => 
     array (
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
-    ),
-  ),
-  'socialiteproviders/manager' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'SocialiteProviders\\Manager\\ServiceProvider',
     ),
   ),
   'spatie/laravel-permission' => 

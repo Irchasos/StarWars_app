@@ -67,7 +67,7 @@
 
                         </tbody>
                     </table>
-                    <a type="button" href="{{ route('store') }}"class="btn btn-lg btn-outline-success">Buy Equipment</a>
+                    <a type="button" href="{{ route('store.index') }}"class="btn btn-lg btn-outline-success">Buy Equipment</a>
                 </div>
             </div>
             <div class="clearfix"></div>

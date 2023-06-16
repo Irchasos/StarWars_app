@@ -167,7 +167,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 //        Maatwebsite\Excel\ExcelServiceProvider::class,
         App\Providers\GoogleDriveServiceProvider::class,
-        Mews\Captcha\CaptchaServiceProvider::class,
+        Livewire\LivewireServiceProvider::class,
 
 
 
@@ -185,6 +185,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Jackiedo\Cart\CartServiceProvider::class,
 
 
     ],
@@ -246,8 +247,9 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Cart' => Jackiedo\Cart\Facades\Cart::class,
+
 //        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
 
 

@@ -1,16 +1,31 @@
-@extends('layouts.layout')
-@section('header')
-        <!DOCTYPE HTML>
-<html>
 <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
 
-    <title>Star Wars App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>{{ trans('mainpage.star_wars_app') }}</title>
+    <script src="https://kit.fontawesome.com/43af320612.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
-    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css" media="all">
+    {{--    <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    {{--    <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
+    {{--    <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    {{--    <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" media="all">
+    {{--    <link href="{{asset('css/bootstrap-select.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}
+    <link href="{{asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" media="all">
     <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all"/>
+    <link href="{{asset('css/footer.css')}}" rel="stylesheet" type="text/css" media="all"/>
+    {{--    <link href="{{asset('css/swipebox.css')}}" rel="stylesheet" type="text/css" media="all"/>--}}
+    {{--    <link href="{{asset('css/choices.css')}}" rel="stylesheet" type="text/css" media="all"/>--}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -30,4 +45,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
 
 </head>
-    @endsection
