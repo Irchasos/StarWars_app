@@ -14,19 +14,20 @@ class CreateKindsTable extends Migration
     public function up()
     {
         Schema::create(
-            'kinds', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->text('classification');
-            $table->text('designation');
-            $table->text('average_height');
-            $table->text('skin_colors');
-            $table->text('hair_colors');
-            $table->text('eye_colors');
-            $table->text('average_lifespan');
-            $table->text('language');
-            $table->text('url');
-        }
+            'kinds',
+            function (Blueprint $table) {
+                $table->id();
+                $table->text('name');
+                $table->text('classification');
+                $table->text('designation');
+                $table->text('average_height');
+                $table->text('skin_colors');
+                $table->text('hair_colors');
+                $table->text('eye_colors');
+                $table->text('average_lifespan');
+                $table->text('language');
+                $table->text('url');
+            }
         );
     }
 

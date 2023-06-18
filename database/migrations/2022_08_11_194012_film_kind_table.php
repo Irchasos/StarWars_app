@@ -14,13 +14,14 @@ class FilmKindTable extends Migration
     public function up()
     {
         Schema::create(
-            'film_kind', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->UnsignedBiginteger('film_id');
-            $table->UnsignedBiginteger('kind_id');
-            $table->foreign('film_id')->references('id')->on('films');
-            $table->foreign('kind_id')->references('id')->on('kinds');
-        }
+            'film_kind',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->UnsignedBiginteger('film_id');
+                $table->UnsignedBiginteger('kind_id');
+                $table->foreign('film_id')->references('id')->on('films');
+                $table->foreign('kind_id')->references('id')->on('kinds');
+            }
         );
     }
 

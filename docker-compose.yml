@@ -49,17 +49,17 @@ services:
       context: ./
       dockerfile: ./.docker/mysql/Dockerfile
     environment:
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_USER=${DB_USERNAME}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123
+      - MYSQL_ROOT_PASSWORD=123
     volumes:
       - ./.docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - ./.docker/mysql/data:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:
-       - docker
+      - docker
   phpmyadmin:
     image: phpmyadmin
     container_name: php_my_admin
@@ -69,8 +69,8 @@ services:
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=database
-      - PMA_USER=${DB_USERNAME}
-      - PMA_PASSWORD=${DB_PASSWORD}
+      - PMA_USER=root
+      - PMA_PASSWORD=123
     networks:
       - docker
   redis:
@@ -91,5 +91,3 @@ services:
 networks:
   docker:
     name: docker
-
-

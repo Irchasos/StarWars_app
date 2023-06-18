@@ -1,4 +1,5 @@
 <?php
+
 return [
     "default_select_example" => "",
     "failed" => "Te poświadczenia nie są zgodne z naszymi danymi.",

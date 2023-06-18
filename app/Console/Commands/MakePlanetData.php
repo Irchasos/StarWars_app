@@ -56,8 +56,8 @@ class MakePlanetData extends Command
                         'surface_water' => $planet['surface_water'],
                         'population' => $planet['population'],
                         'url' => $planet['url'],
-                        //                    'residents' => $planet['residents'],
-                        //                    'films' => $planet['films'],
+                        // 'residents' => $planet['residents'],
+                        // 'films' => $planet['films'],
                     ]
                 );
             }

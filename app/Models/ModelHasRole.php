@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 /**
  * Created by Reliese Model.
  */
@@ -30,7 +31,7 @@ class ModelHasRole extends Model
         'model_id' => 'int'
     ];
 
-    public function role():BelongsTo
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }

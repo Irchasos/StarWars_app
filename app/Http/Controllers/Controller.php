@@ -1,6 +1,9 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Http\Controllers;
+
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,16 +18,18 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $this->middleware(function ($request, $next) {
-            if (session('success')) {
-                Alert::success(session('success'));
-            }
+        $this->middleware(
+            function ($request, $next) {
+                if (session('success')) {
+                    Alert::success(session('success'));
+                }
 
-            if (session('error')) {
-                Alert::error(session('error'));
-            }
+                if (session('error')) {
+                    Alert::error(session('error'));
+                }
 
-            return $next($request);
-        });
+                return $next($request);
+            }
+        );
     }
 }

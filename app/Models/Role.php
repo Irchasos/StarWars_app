@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 /**
  * Created by Reliese Model.
  */
@@ -9,7 +10,6 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -36,12 +36,12 @@ class Role extends Model
         'guard_name'
     ];
 
-    public function model_has_roles():HasMany
+    public function model_has_roles(): HasMany
     {
         return $this->hasMany(ModelHasRole::class);
     }
 
-    public function permissions():BelongsToMany
+    public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class, 'role_has_permissions');
     }

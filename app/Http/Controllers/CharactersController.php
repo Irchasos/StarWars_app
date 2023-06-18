@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -40,9 +41,11 @@ class CharactersController extends Controller
         }
 
         if ($homeworldTerm) {
-            $charactersQuery->orWhereHas('planet', function ($query) use ($homeworldTerm) {
-                $query->where('name', 'LIKE', '%' . $homeworldTerm . '%');
-            });
+            $charactersQuery->orWhereHas(
+                'planet', function ($query) use ($homeworldTerm) {
+                    $query->where('name', 'LIKE', '%' . $homeworldTerm . '%');
+                }
+            );
         }
 
         $offset = ($request->input('page', 1) - 1) * 15;

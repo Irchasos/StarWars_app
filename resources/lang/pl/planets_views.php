@@ -1,4 +1,5 @@
 <?php
+
 return [
     "a_colloquial_title_also_used_for_the_rulers_of_the" => "Potocznym tytułem używanym również w odniesieniu do władców Północy był „Królowie Zimy”. Ród Starków rządził jako królowie na północy przez tysiące lat.",
     "action" => "Akcja",

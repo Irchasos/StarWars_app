@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Equipment;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Jackiedo\Cart\Cart;
 
@@ -32,20 +31,22 @@ class CartController extends Controller
     }
 
 
-// ...
+    // ...
 
     public function addToCart($productId)
     {
         $equipment = Equipment::find($productId);
 
-        (new \Jackiedo\Cart\Cart)->addItem([
+        (new \Jackiedo\Cart\Cart())->addItem(
+            [
             'id' => $equipment->id,
             'name' => $equipment->name,
             'title' => $equipment->name,
             'price' => $equipment->price,
             'quantity' => 1,
             'attributes' => [], // Możesz dodać dodatkowe atrybuty, jeśli są potrzebne
-        ]);
+            ]
+        );
         // Dodatkowy kod, jeśli potrzebujesz przekierowania lub innych operacji
 
         return redirect()->route('store.index');

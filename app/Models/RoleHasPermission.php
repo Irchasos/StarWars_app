@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 /**
  * Created by Reliese Model.
  */
@@ -30,12 +31,12 @@ class RoleHasPermission extends Model
         'role_id' => 'int'
     ];
 
-    public function permission():BelongsTo
+    public function permission(): BelongsTo
     {
         return $this->belongsTo(Permission::class);
     }
 
-    public function role():BelongsTo
+    public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }

@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-
 interface KindInterface
 {
     public function getAllKinds();

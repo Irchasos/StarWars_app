@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 /**
  * Created by Reliese Model.
  */
@@ -11,7 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use App\Models\Photo;
 
 /**
  * Class Planet
@@ -51,12 +51,12 @@ class Planet extends Model
         'url'
     ];
 
-    public function characters():HasMany
+    public function characters(): HasMany
     {
         return $this->hasMany(Character::class);
     }
 
-    public function films():BelongsToMany
+    public function films(): BelongsToMany
     {
         return $this->belongsToMany(Film::class)
             ->withPivot('id');

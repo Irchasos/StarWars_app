@@ -9,7 +9,6 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -36,12 +35,12 @@ class Permission extends Model
         'guard_name'
     ];
 
-    public function model_has_permissions():HasMany
+    public function model_has_permissions(): HasMany
     {
         return $this->hasMany(ModelHasPermission::class);
     }
 
-    public function roles():BelongsToMany
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'role_has_permissions');
     }

@@ -1,4 +1,5 @@
 <?php
+
 return [
     "action" => "Action",
     "all_of_characters_or_type_and_searchenter" => "All of characters or type and search(Enter)",

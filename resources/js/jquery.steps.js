@@ -132,11 +132,13 @@
      * @param   wizard {Object} A jQuery wizard object
      * @param   step {Object} The step object to add
      **/
-    function addStepToCache(wizard, step) {
+    function addStepToCache(wizard, step)
+    {
         getSteps(wizard).push(step);
     }
 
-    function analyzeData(wizard, options, state) {
+    function analyzeData(wizard, options, state)
+    {
         var stepTitles = wizard.children(options.headerTag),
             stepContents = wizard.children(options.bodyTag);
 
@@ -198,11 +200,13 @@
      * @method  cancel
      * @param   wizard {Object} The jQuery wizard object
      **/
-    function cancel(wizard) {
+    function cancel(wizard)
+    {
         wizard.triggerHandler("canceled");
     }
 
-    function decreaseCurrentIndexBy(state, decreaseBy) {
+    function decreaseCurrentIndexBy(state, decreaseBy)
+    {
         return state.currentIndex - decreaseBy;
     }
 
@@ -214,7 +218,8 @@
      * @method  destroy
      * @param   wizard {Object} A jQuery wizard object
      **/
-    function destroy(wizard, options) {
+    function destroy(wizard, options)
+    {
         var eventNamespace = getEventNamespace(wizard);
 
         // Remove virtual data objects from the wizard
@@ -261,7 +266,8 @@
      * @param   wizard {Object} The jQuery wizard object
      * @param   state {Object} The state container of the current wizard
      **/
-    function finishStep(wizard, state) {
+    function finishStep(wizard, state)
+    {
         var currentStep = wizard.find(".steps li").eq(state.currentIndex);
 
         if (wizard.triggerHandler("finishing", [state.currentIndex])) {
@@ -281,7 +287,8 @@
      * @param   wizard {Object} A jQuery wizard object
      * @return  {String} Returns the unique event namespace for the given wizard
      */
-    function getEventNamespace(wizard) {
+    function getEventNamespace(wizard)
+    {
         var eventNamespace = wizard.data("eventNamespace");
 
         if (eventNamespace == null) {
@@ -292,33 +299,39 @@
         return eventNamespace;
     }
 
-    function getStepAnchor(wizard, index) {
+    function getStepAnchor(wizard, index)
+    {
         var uniqueId = getUniqueId(wizard);
 
         return wizard.find("#" + uniqueId + _tabSuffix + index);
     }
 
-    function getStepPanel(wizard, index) {
+    function getStepPanel(wizard, index)
+    {
         var uniqueId = getUniqueId(wizard);
 
         return wizard.find("#" + uniqueId + _tabpanelSuffix + index);
     }
 
-    function getStepTitle(wizard, index) {
+    function getStepTitle(wizard, index)
+    {
         var uniqueId = getUniqueId(wizard);
 
         return wizard.find("#" + uniqueId + _titleSuffix + index);
     }
 
-    function getOptions(wizard) {
+    function getOptions(wizard)
+    {
         return wizard.data("options");
     }
 
-    function getState(wizard) {
+    function getState(wizard)
+    {
         return wizard.data("state");
     }
 
-    function getSteps(wizard) {
+    function getSteps(wizard)
+    {
         return wizard.data("steps");
     }
 
@@ -331,7 +344,8 @@
      * @param   index {Integer} An integer that belongs to the position of a step
      * @return  {Object} A specific step object
      **/
-    function getStep(wizard, index) {
+    function getStep(wizard, index)
+    {
         var steps = getSteps(wizard);
 
         if (index < 0 || index >= steps.length) {
@@ -350,7 +364,8 @@
      * @param   wizard {Object} A jQuery wizard object
      * @return  {String} Returns the unique id for the given wizard
      */
-    function getUniqueId(wizard) {
+    function getUniqueId(wizard)
+    {
         var uniqueId = wizard.data("uid");
 
         if (uniqueId == null) {
@@ -376,7 +391,8 @@
      * @param   enumType {Object} Type of enum
      * @param   keyOrValue {Object} Key as `String` or value as `Integer` to check for
      */
-    function getValidEnumValue(enumType, keyOrValue) {
+    function getValidEnumValue(enumType, keyOrValue)
+    {
         validateArgument("enumType", enumType);
         validateArgument("keyOrValue", keyOrValue);
 
@@ -416,7 +432,8 @@
      * @param   state {Object} The state container of the current wizard
      * @return  {Boolean} Indicates whether the action executed
      **/
-    function goToNextStep(wizard, options, state) {
+    function goToNextStep(wizard, options, state)
+    {
         return paginationClick(wizard, options, state, increaseCurrentIndexBy(state, 1));
     }
 
@@ -431,7 +448,8 @@
      * @param   state {Object} The state container of the current wizard
      * @return  {Boolean} Indicates whether the action executed
      **/
-    function goToPreviousStep(wizard, options, state) {
+    function goToPreviousStep(wizard, options, state)
+    {
         return paginationClick(wizard, options, state, decreaseCurrentIndexBy(state, 1));
     }
 
@@ -447,7 +465,8 @@
      * @param   index {Integer} The position (zero-based) to route to
      * @return  {Boolean} Indicates whether the action succeeded or failed
      **/
-    function goToStep(wizard, options, state, index) {
+    function goToStep(wizard, options, state, index)
+    {
         if (index < 0 || index >= state.stepCount) {
             throwError(_indexOutOfRangeErrorMessage);
         }
@@ -478,7 +497,8 @@
         return true;
     }
 
-    function increaseCurrentIndexBy(state, increaseBy) {
+    function increaseCurrentIndexBy(state, increaseBy)
+    {
         return state.currentIndex + increaseBy;
     }
 
@@ -490,7 +510,8 @@
      * @method  initialize
      * @param   options {Object} The component settings
      **/
-    function initialize(options) {
+    function initialize(options)
+    {
         /*jshint -W040 */
         var opts = $.extend(true, {}, defaults, options);
 
@@ -543,7 +564,8 @@
      *     });
      * @chainable
      **/
-    function insertStep(wizard, options, state, index, step) {
+    function insertStep(wizard, options, state, index, step)
+    {
         if (index < 0 || index > state.stepCount) {
             throwError(_indexOutOfRangeErrorMessage);
         }
@@ -594,7 +616,8 @@
      * @param   index {Integer} The position (zero-based) to add
      * @param   step {Object} The step object to add
      **/
-    function insertStepToCache(wizard, index, step) {
+    function insertStepToCache(wizard, index, step)
+    {
         getSteps(wizard).splice(index, 0, step);
     }
 
@@ -606,7 +629,8 @@
      * @event   keyup
      * @param   event {Object} An event object
      */
-    function keyUpHandler(event) {
+    function keyUpHandler(event)
+    {
         var wizard = $(this),
             options = getOptions(wizard),
             state = getState(wizard);
@@ -636,29 +660,30 @@
      * @param   options {Object} Settings of the current wizard
      * @param   state {Object} The state container of the current wizard
      */
-    function loadAsyncContent(wizard, options, state) {
+    function loadAsyncContent(wizard, options, state)
+    {
         if (state.stepCount > 0) {
             var currentIndex = state.currentIndex,
                 currentStep = getStep(wizard, currentIndex);
 
             if (!options.enableContentCache || !currentStep.contentLoaded) {
                 switch (getValidEnumValue(contentMode, currentStep.contentMode)) {
-                    case contentMode.iframe:
-                        wizard.find(".content > .body").eq(state.currentIndex).empty()
-                            .html("<iframe src=\"" + currentStep.contentUrl + "\" frameborder=\"0\" scrolling=\"no\" />")
-                            .data("loaded", "1");
+                case contentMode.iframe:
+                    wizard.find(".content > .body").eq(state.currentIndex).empty()
+                        .html("<iframe src=\"" + currentStep.contentUrl + "\" frameborder=\"0\" scrolling=\"no\" />")
+                        .data("loaded", "1");
                         break;
 
-                    case contentMode.async:
-                        var currentStepContent = getStepPanel(wizard, currentIndex)._aria("busy", "true")
-                            .empty().append(renderTemplate(options.loadingTemplate, {text: options.labels.loading}));
+                case contentMode.async:
+                    var currentStepContent = getStepPanel(wizard, currentIndex)._aria("busy", "true")
+                        .empty().append(renderTemplate(options.loadingTemplate, {text: options.labels.loading}));
 
-                        $.ajax({url: currentStep.contentUrl, cache: false}).done(
-                            function (data) {
-                                currentStepContent.empty().html(data)._aria("busy", "false").data("loaded", "1");
-                                wizard.triggerHandler("contentLoaded", [currentIndex]);
-                            }
-                        );
+                    $.ajax({url: currentStep.contentUrl, cache: false}).done(
+                        function (data) {
+                            currentStepContent.empty().html(data)._aria("busy", "false").data("loaded", "1");
+                            wizard.triggerHandler("contentLoaded", [currentIndex]);
+                        }
+                    );
                         break;
                 }
             }
@@ -677,7 +702,8 @@
      * @param   index {Integer} The position (zero-based) to route to
      * @return  {Boolean} Indicates whether the event fired successfully or not
      **/
-    function paginationClick(wizard, options, state, index) {
+    function paginationClick(wizard, options, state, index)
+    {
         var oldIndex = state.currentIndex;
 
         if (index >= 0 && index < state.stepCount && !(options.forceMoveForward && index < state.currentIndex)) {
@@ -710,7 +736,8 @@
      * @event   click
      * @param   event {Object} An event object
      */
-    function paginationClickHandler(event) {
+    function paginationClickHandler(event)
+    {
         event.preventDefault();
 
         var anchor = $(this),
@@ -720,20 +747,20 @@
             href = anchor.attr("href");
 
         switch (href.substring(href.lastIndexOf("#") + 1)) {
-            case "cancel":
-                cancel(wizard);
+        case "cancel":
+            cancel(wizard);
                 break;
 
-            case "finish":
-                finishStep(wizard, state);
+        case "finish":
+            finishStep(wizard, state);
                 break;
 
-            case "next":
-                goToNextStep(wizard, options, state);
+        case "next":
+            goToNextStep(wizard, options, state);
                 break;
 
-            case "previous":
-                goToPreviousStep(wizard, options, state);
+        case "previous":
+            goToPreviousStep(wizard, options, state);
                 break;
         }
     }
@@ -748,7 +775,8 @@
      * @param   options {Object} Settings of the current wizard
      * @param   state {Object} The state container of the current wizard
      */
-    function refreshPagination(wizard, options, state) {
+    function refreshPagination(wizard, options, state)
+    {
         if (options.enablePagination) {
             var finish = wizard.find(".actions a[href$='#finish']").parent(),
                 next = wizard.find(".actions a[href$='#next']").parent();
@@ -779,7 +807,8 @@
      * @param   state {Object} The state container of the current wizard
      * @param   [oldIndex] {Integer} The index of the prior step
      */
-    function refreshStepNavigation(wizard, options, state, oldIndex) {
+    function refreshStepNavigation(wizard, options, state, oldIndex)
+    {
         var currentOrNewStepAnchor = getStepAnchor(wizard, state.currentIndex),
             currentInfo = $("<span class=\"current-info audible\">" + options.labels.current + " </span>"),
             stepTitles = wizard.find(".content > .title");
@@ -807,7 +836,8 @@
      * @param   state {Object} The state container of the current wizard
      * @param   index {Integer} The start point for refreshing ids
      */
-    function refreshSteps(wizard, options, state, index) {
+    function refreshSteps(wizard, options, state, index)
+    {
         var uniqueId = getUniqueId(wizard);
 
         for (var i = index; i < state.stepCount; i++) {
@@ -824,7 +854,8 @@
         }
     }
 
-    function registerEvents(wizard, options) {
+    function registerEvents(wizard, options)
+    {
         var eventNamespace = getEventNamespace(wizard);
 
         wizard.bind("canceled" + eventNamespace, options.onCanceled);
@@ -854,7 +885,8 @@
      * @param   index {Integer} The position (zero-based) of the step to remove
      * @return  Indecates whether the item is removed.
      **/
-    function removeStep(wizard, options, state, index) {
+    function removeStep(wizard, options, state, index)
+    {
         // Index out of range and try deleting current item will return false.
         if (index < 0 || index >= state.stepCount || state.currentIndex === index) {
             return false;
@@ -888,7 +920,8 @@
         return true;
     }
 
-    function removeStepFromCache(wizard, index) {
+    function removeStepFromCache(wizard, index)
+    {
         getSteps(wizard).splice(index, 1);
     }
 
@@ -902,7 +935,8 @@
      * @param   options {Object} Settings of the current wizard
      * @param   state {Object} The state container of the current wizard
      **/
-    function render(wizard, options, state) {
+    function render(wizard, options, state)
+    {
         // Create a content wrapper and copy HTML from the intial wizard structure
         var wrapperTemplate = "<{0} class=\"{1}\">{2}</{0}>",
             orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
@@ -943,7 +977,8 @@
      * @param   body {Object} A jQuery body object
      * @param   index {Integer} The position of the body
      */
-    function renderBody(wizard, state, body, index) {
+    function renderBody(wizard, state, body, index)
+    {
         var uniqueId = getUniqueId(wizard),
             uniqueBodyId = uniqueId + _tabpanelSuffix + index,
             uniqueHeaderId = uniqueId + _titleSuffix + index;
@@ -962,7 +997,8 @@
      * @param   options {Object} Settings of the current wizard
      * @param   state {Object} The state container of the current wizard
      */
-    function renderPagination(wizard, options, state) {
+    function renderPagination(wizard, options, state)
+    {
         if (options.enablePagination) {
             var pagination = "<{0} class=\"actions {1}\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
                 buttonTemplate = "<li><a href=\"#{0}\" role=\"menuitem\">{1}</a></li>",
@@ -1004,7 +1040,8 @@
      * @param   substitutes {Object} A list of substitute
      * @return  {String} The rendered template
      */
-    function renderTemplate(template, substitutes) {
+    function renderTemplate(template, substitutes)
+    {
         var matches = template.match(/#([a-z]*)#/gi);
 
         for (var i = 0; i < matches.length; i++) {
@@ -1033,7 +1070,8 @@
      * @param   header {Object} A jQuery header object
      * @param   index {Integer} The position of the header
      */
-    function renderTitle(wizard, options, state, header, index) {
+    function renderTitle(wizard, options, state, header, index)
+    {
         var uniqueId = getUniqueId(wizard),
             uniqueStepId = uniqueId + _tabSuffix + index,
             uniqueBodyId = uniqueId + _tabpanelSuffix + index,
@@ -1088,13 +1126,15 @@
      * @param   options {Object} Settings of the current wizard
      * @param   state {Object} The state container of the current wizard
      */
-    function saveCurrentStateToCookie(wizard, options, state) {
+    function saveCurrentStateToCookie(wizard, options, state)
+    {
         if (options.saveState && $.cookie) {
             $.cookie(_cookiePrefix + getUniqueId(wizard), state.currentIndex);
         }
     }
 
-    function startTransitionEffect(wizard, options, state, index, oldIndex, doneCallback) {
+    function startTransitionEffect(wizard, options, state, index, oldIndex, doneCallback)
+    {
         var stepContents = wizard.find(".content > .body"),
             effect = getValidEnumValue(transitionEffect, options.transitionEffect),
             effectSpeed = options.transitionEffectSpeed,
@@ -1102,49 +1142,49 @@
             currentStep = stepContents.eq(oldIndex);
 
         switch (effect) {
-            case transitionEffect.fade:
-            case transitionEffect.slide:
-                var hide = (effect === transitionEffect.fade) ? "fadeOut" : "slideUp",
-                    show = (effect === transitionEffect.fade) ? "fadeIn" : "slideDown";
+        case transitionEffect.fade:
+        case transitionEffect.slide:
+            var hide = (effect === transitionEffect.fade) ? "fadeOut" : "slideUp",
+                show = (effect === transitionEffect.fade) ? "fadeIn" : "slideDown";
 
-                state.transitionElement = newStep;
-                currentStep[hide](
-                    effectSpeed, function () {
-                        var wizard = $(this)._showAria(false).parent().parent(),
-                            state = getState(wizard);
+            state.transitionElement = newStep;
+            currentStep[hide](
+                effectSpeed, function () {
+                    var wizard = $(this)._showAria(false).parent().parent(),
+                        state = getState(wizard);
 
-                        if (state.transitionElement) {
-                            state.transitionElement[show](
-                                effectSpeed, function () {
-                                    $(this)._showAria();
-                                }
-                            ).promise().done(doneCallback);
-                            state.transitionElement = null;
-                        }
+                    if (state.transitionElement) {
+                        state.transitionElement[show](
+                            effectSpeed, function () {
+                                $(this)._showAria();
+                            }
+                        ).promise().done(doneCallback);
+                        state.transitionElement = null;
                     }
-                );
+                }
+            );
             break;
 
-            case transitionEffect.slideLeft:
-                var outerWidth = currentStep.outerWidth(true),
-                    posFadeOut = (index > oldIndex) ? -(outerWidth) : outerWidth,
-                    posFadeIn = (index > oldIndex) ? outerWidth : -(outerWidth);
+        case transitionEffect.slideLeft:
+            var outerWidth = currentStep.outerWidth(true),
+                posFadeOut = (index > oldIndex) ? -(outerWidth) : outerWidth,
+                posFadeIn = (index > oldIndex) ? outerWidth : -(outerWidth);
 
-                $.when(
-                    currentStep.animate(
-                        {left: posFadeOut}, effectSpeed,
-                        function () {
-                            $(this)._showAria(false);
-                        }
-                    ),
-                    newStep.css("left", posFadeIn + "px")._showAria()
-                        .animate({left: 0}, effectSpeed)
-                ).done(doneCallback);
+            $.when(
+                currentStep.animate(
+                    {left: posFadeOut}, effectSpeed,
+                    function () {
+                        $(this)._showAria(false);
+                    }
+                ),
+                newStep.css("left", posFadeIn + "px")._showAria()
+                    .animate({left: 0}, effectSpeed)
+            ).done(doneCallback);
                 break;
 
-            default:
-                $.when(currentStep._showAria(false), newStep._showAria())
-                    .done(doneCallback);
+        default:
+            $.when(currentStep._showAria(false), newStep._showAria())
+                .done(doneCallback);
                 break;
         }
     }
@@ -1157,7 +1197,8 @@
      * @event   click
      * @param   event {Object} An event object
      */
-    function stepClickHandler(event) {
+    function stepClickHandler(event)
+    {
         event.preventDefault();
 
         var anchor = $(this),
@@ -1180,7 +1221,8 @@
         }
     }
 
-    function throwError(message) {
+    function throwError(message)
+    {
         if (arguments.length > 1) {
             message = message.format(Array.prototype.slice.call(arguments, 1));
         }
@@ -1197,7 +1239,8 @@
      * @param   argumentName {String} The name of the given argument
      * @param   argumentValue {Object} The argument itself
      */
-    function validateArgument(argumentName, argumentValue) {
+    function validateArgument(argumentName, argumentValue)
+    {
         if (argumentValue == null) {
             throwError("The argument '{0}' is null or undefined.", argumentName);
         }

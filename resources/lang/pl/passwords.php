@@ -1,4 +1,5 @@
 <?php
+
 return [
     "reset" => "Twoje hasło zostało zresetowane!",
     "sent" => "Prześlemy Ci e-mailem link do resetowania hasła!",

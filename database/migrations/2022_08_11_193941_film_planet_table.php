@@ -14,13 +14,14 @@ class FilmPlanetTable extends Migration
     public function up()
     {
         Schema::create(
-            'film_planet', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->UnsignedBiginteger('film_id');
-            $table->UnsignedBiginteger('planet_id');
-            $table->foreign('film_id')->references('id')->on('films');
-            $table->foreign('planet_id')->references('id')->on('planets');
-        }
+            'film_planet',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->UnsignedBiginteger('film_id');
+                $table->UnsignedBiginteger('planet_id');
+                $table->foreign('film_id')->references('id')->on('films');
+                $table->foreign('planet_id')->references('id')->on('planets');
+            }
         );
     }
 

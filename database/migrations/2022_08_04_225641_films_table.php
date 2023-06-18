@@ -14,18 +14,19 @@ class FilmsTable extends Migration
     public function up()
     {
         Schema::create(
-            'films', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('episode_id');
-            $table->longText('opening_crawl');
-            $table->string('director');
-            $table->string('producer');
-            $table->string('release_date');
-            $table->string('url');
+            'films',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('title');
+                $table->string('episode_id');
+                $table->longText('opening_crawl');
+                $table->string('director');
+                $table->string('producer');
+                $table->string('release_date');
+                $table->string('url');
 
 
-        }
+            }
         );
     }
 

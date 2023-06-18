@@ -1,4 +1,5 @@
 <?php
+
 return [
     "account_menu" => "Zarządzaj",
     "add_photo" => "Dodaj zdjęcie",

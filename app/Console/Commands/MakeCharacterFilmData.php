@@ -9,40 +9,37 @@ use Illuminate\Console\Command;
 
 class MakeCharacterFilmData extends Command
 {
-
-
     protected $signature = 'command:character_film';
-
 
     protected $description = 'Pivot for relation Films and characters';
 
-
     public function handle()
     {
-
         $client = new Client();
         $request = $client->get('https://swapi.py4e.com/api/people/');
         $data = json_decode($request->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
 
-        $pages = (int)$full_pages = $data['count'] / 10;
+        $pages = (int) $full_pages = $data['count'] / 10;
         $last_page = $data['count'] % 10;
         if ($last_page > 0) {
             ++$pages;
         }
+
         for ($i = 1; $i <= $pages; $i++) {
             $client = new Client();
             $request = $client->get('https://swapi.py4e.com/api/people/?page=' . $i);
             $data = json_decode($request->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
-            foreach ($data['results'] as $apicharacter) {
 
+            foreach ($data['results'] as $apicharacter) {
                 $character = Character::where('url', $apicharacter['url'])->firstOrFail();
                 $max = count($apicharacter['films']);
                 $characterId = $character->id;
-                //Pierwszy element pivota
 
+                // Pierwszy element pivota
                 for ($j = 0; $j < $max; $j++) {
                     $film = Film::where('url', $apicharacter['films'][$j])->get();
-                    //drugie elementy pivota
+
+                    // Drugie elementy pivota
                     foreach ($film as $item) {
                         $item->characters()->attach($characterId);
                     }
@@ -50,6 +47,4 @@ class MakeCharacterFilmData extends Command
             }
         }
     }
-
-
 }

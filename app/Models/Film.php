@@ -8,7 +8,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -48,41 +47,42 @@ class Film extends Model
         'url'
     ];
 
-    public function characters():BelongsToMany
+    public function characters(): BelongsToMany
     {
         return $this->belongsToMany(Character::class)
             ->withPivot('id');
     }
-    public function trailers():hasMany
+    public function trailers(): hasMany
     {
         return $this->hasMany(TrailerFilm::class);
 
     }
 
-    public function kinds():BelongsToMany
+    public function kinds(): BelongsToMany
     {
         return $this->belongsToMany(Kind::class)
             ->withPivot('id');
     }
 
-    public function planets():BelongsToMany
+    public function planets(): BelongsToMany
     {
         return $this->belongsToMany(Planet::class)
             ->withPivot('id');
     }
 
-    public function starships():BelongsToMany
+    public function starships(): BelongsToMany
     {
         return $this->belongsToMany(Starship::class)
             ->withPivot('id');
     }
 
-    public function vehicles():BelongsToMany
+    public function vehicles(): BelongsToMany
     {
         return $this->belongsToMany(Vehicle::class)
             ->withPivot('id');
     }
-    public function photos():MorphMany
+    public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'photoable');
-    }}
+    }
+}

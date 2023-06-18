@@ -42,12 +42,15 @@ class SetPermissionToRoleCommand extends Command
         $role = Role::findByName('Imperator');
         $permission = Permission::all();
         $role->givePermissionTo($permission);
+
         $role = Role::findByName('Corporal');
         $permission = Permission::all()->where('id', '<', '3');
         $role->givePermissionTo($permission);
+
         $role = Role::findByName('Lieutenant');
         $permission = Permission::all()->where('id', '<', '6');
         $role->givePermissionTo($permission);
+
         $role = Role::findByName('General');
         $permission = Permission::all()->where('id', '<', '8');
         $role->givePermissionTo($permission);

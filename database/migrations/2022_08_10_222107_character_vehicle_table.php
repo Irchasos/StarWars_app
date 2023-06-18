@@ -15,13 +15,14 @@ class CharacterVehicleTable extends Migration
     public function up()
     {
         Schema::create(
-            'character_vehicle', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->UnsignedBiginteger('character_id');
-            $table->UnsignedBiginteger('vehicle_id');
-            $table->foreign('character_id')->references('id')->on('characters');
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
-        }
+            'character_vehicle',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->UnsignedBiginteger('character_id');
+                $table->UnsignedBiginteger('vehicle_id');
+                $table->foreign('character_id')->references('id')->on('characters');
+                $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            }
         );
     }
 

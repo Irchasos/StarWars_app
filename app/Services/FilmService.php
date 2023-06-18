@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Repositories\FilmInterface;
 use Illuminate\Support\Collection;
 

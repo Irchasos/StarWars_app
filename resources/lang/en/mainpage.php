@@ -1,4 +1,5 @@
 <?php
+
 return [
     "account_menu" => "Account Menu",
     "add_photo" => "Add photo",

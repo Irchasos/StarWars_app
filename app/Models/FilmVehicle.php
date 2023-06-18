@@ -35,12 +35,12 @@ class FilmVehicle extends Model
         'vehicle_id'
     ];
 
-    public function film():BelongsTo
+    public function film(): BelongsTo
     {
         return $this->belongsTo(Film::class);
     }
 
-    public function vehicle():BelongsTo
+    public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);
     }

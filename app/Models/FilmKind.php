@@ -35,12 +35,12 @@ class FilmKind extends Model
         'kind_id'
     ];
 
-    public function film():BelongsTo
+    public function film(): BelongsTo
     {
         return $this->belongsTo(Film::class);
     }
 
-    public function kind():BelongsTo
+    public function kind(): BelongsTo
     {
         return $this->belongsTo(Kind::class);
     }

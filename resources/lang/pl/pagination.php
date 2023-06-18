@@ -1,4 +1,5 @@
 <?php
+
 return [
     "a_colloquial_title_also_used_for_the_rulers_of_the" => "",
     "action" => "",

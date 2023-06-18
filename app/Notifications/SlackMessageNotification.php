@@ -2,11 +2,9 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
+use Illuminate\Notifications\Notification;
+
 class SlackMessageNotification extends Notification
 {
     protected $message;
@@ -23,7 +21,7 @@ class SlackMessageNotification extends Notification
 
     public function toSlack($notifiable)
     {
-        return (new SlackMessage)
+        return (new SlackMessage())
             ->content($this->message);
     }
 }

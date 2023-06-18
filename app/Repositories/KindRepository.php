@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Kind;
 
 class KindRepository implements KindInterface

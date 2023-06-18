@@ -35,12 +35,12 @@ class CharacterVehicle extends Model
         'vehicle_id'
     ];
 
-    public function character():BelongsTo
+    public function character(): BelongsTo
     {
         return $this->belongsTo(Character::class);
     }
 
-    public function vehicle():BelongsTo
+    public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);
     }

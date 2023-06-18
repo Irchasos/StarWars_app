@@ -50,11 +50,10 @@ class MakeAllDataCommand extends Command
         $this->call('command:film_planet');
         $this->call('command:film_vehicle');
         $this->call('command:film_starship');
-
         $this->call('command:permission');
         $this->call('command:roles');
         $this->call('command:setperm');
-                $this->call('command:trailer');
+        $this->call('command:trailer');
 
 
     }

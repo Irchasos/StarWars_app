@@ -1,4 +1,5 @@
 <?php
+
 return [
     "action" => "Action",
     "all_of_characters_or_type_and_searchenter" => "All of characters or type and search(Enter)",
@@ -29,5 +30,5 @@ return [
     "starships_list" => "starships list",
     "submit" => "submit",
     "vehicles" => "Vehicles",
-    "view_all_characters" => "View All characters"
+    "view_all_characters" => "View All characters",
 ];

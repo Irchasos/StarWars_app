@@ -35,12 +35,12 @@ class FilmStarship extends Model
         'starship_id'
     ];
 
-    public function film():BelongsTo
+    public function film(): BelongsTo
     {
         return $this->belongsTo(Film::class);
     }
 
-    public function starship():BelongsTo
+    public function starship(): BelongsTo
     {
         return $this->belongsTo(Starship::class);
     }

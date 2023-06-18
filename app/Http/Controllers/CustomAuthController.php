@@ -1,23 +1,22 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
-
+use App\Notifications\SlackMessageNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
-use Laravel\Socialite\Facades\Socialite;
-use App\Notifications\SlackMessageNotification;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class CustomAuthController extends Controller
 {
-
     public function index()
     {
 
@@ -98,16 +97,17 @@ class CustomAuthController extends Controller
         $user = User::firstorCreate(
             [
                 'email' => $user->email
-            ], [
+            ],
+            [
                 'name' => $user->name,
                 'password' => Hash::make(Str::random(24)),
                 'avatar' => 'storage/placeholders/character.jpg',
             ]
-
         );
         $user->assignRole('Corporal');
         Auth::login($user, true);
-        return redirect('/index')->withSuccess('Signed in');;
+        return redirect('/index')->withSuccess('Signed in');
+        ;
 
     }
 
@@ -122,14 +122,16 @@ class CustomAuthController extends Controller
         $user = User::firstorCreate(
             [
                 'email' => $user->email
-            ], [
+            ],
+            [
                 'name' => $user->name,
                 'password' => Hash::make(Str::random(24))
             ]
         );
         $user->assignRole('Corporal');
         Auth::login($user, true);
-        return redirect('/index')->withSuccess('Signed in');;
+        return redirect('/index')->withSuccess('Signed in');
+        ;
 
     }
 
@@ -144,14 +146,16 @@ class CustomAuthController extends Controller
         $user = User::firstorCreate(
             [
                 'email' => $user->email
-            ], [
+            ],
+            [
                 'name' => $user->name,
                 'password' => Hash::make(Str::random(24))
             ]
         );
         $user->assignRole('Corporal');
         Auth::login($user, true);
-        return redirect('/index')->withSuccess('Signed in');;
+        return redirect('/index')->withSuccess('Signed in');
+        ;
 
     }
 
@@ -162,18 +166,21 @@ class CustomAuthController extends Controller
 
     public function twitterRedirect()
     {
-        $user = Socialite::driver('twitter')->user();dd($user);
+        $user = Socialite::driver('twitter')->user();
+        dd($user);
         $user = User::firstorCreate(
             [
                 'email' => $user->email
-            ], [
+            ],
+            [
                 'name' => $user->name,
                 'password' => Hash::make(Str::random(24))
             ]
         );
         $user->assignRole('Corporal');
         Auth::login($user, true);
-        return redirect('/index')->withSuccess('Signed in');;
+        return redirect('/index')->withSuccess('Signed in');
+        ;
 
     }
     public function slack()
@@ -188,14 +195,16 @@ class CustomAuthController extends Controller
         $user = User::firstorCreate(
             [
                 'email' => $user->email
-            ], [
+            ],
+            [
                 'name' => $user->name,
                 'password' => Hash::make(Str::random(24))
             ]
         );
         $user->assignRole('Corporal');
         Auth::login($user, true);
-        return redirect('/index')->withSuccess('Signed in');;
+        return redirect('/index')->withSuccess('Signed in');
+        ;
 
     }
     public function sendSlackMessage(Request $request)
@@ -211,6 +220,3 @@ class CustomAuthController extends Controller
 
 
 }
-
-
-

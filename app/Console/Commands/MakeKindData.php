@@ -28,51 +28,47 @@ class MakeKindData extends Command
         $client = new Client();
         try {
             $request = $client->get('https://swapi.py4e.com/api/species/');
-
         } catch (GuzzleException $e) {
+            // Obsługa błędu żądania HTTP
         }
         try {
             $data = json_decode($request->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
+            // Obsługa błędu dekodowania JSON
         }
-        $pages = (int)$full_pages = $data['count'] / 10;
 
+        $pages = (int) $full_pages = $data['count'] / 10;
         $last_page = $data['count'] % 10;
 
         if ($last_page > 0) {
             ++$pages;
-
         }
 
         for ($i = 1; $i <= $pages; $i++) {
-
             try {
-
                 $request = $client->get('https://swapi.py4e.com/api/species/?page=' . $i);
-
             } catch (GuzzleException $e) {
+                // Obsługa błędu żądania HTTP
             }
             try {
                 $data = json_decode($request->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
             } catch (JsonException $e) {
+                // Obsługa błędu dekodowania JSON
             }
 
             foreach ($data['results'] as $species) {
-                DB::table('kinds')->insert(
-                    [
-                        'name' => $species['name'],
-                        'classification' => $species['classification'],
-                        'designation' => $species['designation'],
-                        'average_height' => $species['average_height'],
-                        'skin_colors' => $species['skin_colors'],
-                        'hair_colors' => $species['hair_colors'],
-                        'eye_colors' => $species['eye_colors'],
-                        'average_lifespan' => $species['average_lifespan'],
-                        'language' => $species['language'],
-                        'url' => $species['url'],
-
-                    ]
-                );
+                DB::table('kinds')->insert([
+                    'name' => $species['name'],
+                    'classification' => $species['classification'],
+                    'designation' => $species['designation'],
+                    'average_height' => $species['average_height'],
+                    'skin_colors' => $species['skin_colors'],
+                    'hair_colors' => $species['hair_colors'],
+                    'eye_colors' => $species['eye_colors'],
+                    'average_lifespan' => $species['average_lifespan'],
+                    'language' => $species['language'],
+                    'url' => $species['url'],
+                ]);
             }
         }
     }

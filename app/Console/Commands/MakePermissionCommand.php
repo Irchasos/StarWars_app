@@ -38,20 +38,20 @@ class MakePermissionCommand extends Command
      */
     public function handle()
     {
-        //set 1level of roles
+        // Set 1st level of roles
         Permission::create(['name' => 'add photo to items']);
-        Permission::create(['name' => 'pasport generate']);
+        Permission::create(['name' => 'passport generate']);
 
-        //set 2level of roles
-
+        // Set 2nd level of roles
         Permission::create(['name' => 'make a character in base']);
         Permission::create(['name' => 'edit character in base']);
         Permission::create(['name' => 'delete photo of items']);
 
-        //set 3level of roles
+        // Set 3rd level of roles
         Permission::create(['name' => 'Socialite typing']);
         Permission::create(['name' => 'add permissions']);
-        //set 4level of roles
+
+        // Set 4th level of roles
         Permission::create(['name' => 'add roles']);
         Permission::create(['name' => 'set roles']);
         Permission::create(['name' => 'set global message flash']);

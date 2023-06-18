@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Repositories\VehicleInterface;
 use Illuminate\Support\Collection;
 

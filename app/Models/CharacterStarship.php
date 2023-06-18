@@ -36,12 +36,12 @@ class CharacterStarship extends Model
         'starship_id'
     ];
 
-    public function character():BelongsTo
+    public function character(): BelongsTo
     {
         return $this->belongsTo(Character::class);
     }
 
-    public function starship():BelongsTo
+    public function starship(): BelongsTo
     {
         return $this->belongsTo(Starship::class);
     }

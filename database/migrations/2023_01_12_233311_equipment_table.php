@@ -14,19 +14,20 @@ class EquipmentTable extends Migration
     public function up()
     {
         Schema::create(
-            'equipment', function (Blueprint $table) {
-            $table->text('Name');
-            $table->text('Group');
-            $table->string('Price');
-            $table->string('Rarity');
-            $table->text('Type');
-            $table->bigIncrements('Id');
-            $table->integer('Storage');
+            'equipment',
+            function (Blueprint $table) {
+                $table->text('Name');
+                $table->text('Group');
+                $table->string('Price');
+                $table->string('Rarity');
+                $table->text('Type');
+                $table->bigIncrements('Id');
+                $table->integer('Storage');
 
 
 
 
-        }
+            }
         );
     }
 

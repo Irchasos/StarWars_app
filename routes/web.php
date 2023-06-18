@@ -13,7 +13,6 @@ use App\Http\Controllers\StarshipsController;
 use App\Http\Controllers\VehiclesController;
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,9 +62,10 @@ Route::get('/films/{film}', [FilmsController::class, 'show'])->name('films.show'
 
 
 Route::get(
-    '/register', static function () {
-    return view('register');
-}
+    '/register',
+    static function () {
+        return view('register');
+    }
 );
 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
@@ -106,8 +106,3 @@ Route::post('cart/{productId}', [CartController::class, 'addToCart'])->name('sto
 
 Route::get('refresh_captcha', 'HomeController@refreshCaptcha')->name('refresh_captcha');
 Route::post('/send-slack-message', [CustomAuthController::class, 'SendSlackMessage'])->name('sendSlackMessage');
-
-
-
-
-

@@ -16,7 +16,7 @@ declare module "model/Bridge/ActionEnum" {
     }
 }
 declare module "model/Bridge/IResponse" {
-    import { ActionEnum } from "model/Bridge/ActionEnum";
+    import {ActionEnum} from "model/Bridge/ActionEnum";
     export default interface IResponse {
         action: ActionEnum;
         data: any;
@@ -32,7 +32,7 @@ declare module "model/Bridge/IHandler" {
     }
 }
 declare module "model/Bridge/HandlerManager" {
-    import { ActionEnum } from "model/Bridge/ActionEnum";
+    import {ActionEnum} from "model/Bridge/ActionEnum";
     import IHandler from "model/Bridge/IHandler";
     export default class HandlerManager {
         readonly map: Map<ActionEnum, Map<string, IHandler>>;
@@ -43,7 +43,7 @@ declare module "model/Bridge/HandlerManager" {
     }
 }
 declare module "model/Bridge/Bridge" {
-    import { ActionEnum } from "model/Bridge/ActionEnum";
+    import {ActionEnum} from "model/Bridge/ActionEnum";
     import HandlerManager from "model/Bridge/HandlerManager";
     import IResponse from "model/Bridge/IResponse";
     export default class Bridge {
@@ -72,9 +72,10 @@ declare module "helper/makeBridge" {
     export default function makeBridge(cefw: ICEFW): void;
 }
 declare module "model/Event/NameChangeListener" {
-    import { EventEmitter } from 'events';
+    import {EventEmitter} from 'events';
     import StrictEventEmitter from 'strict-event-emitter-types';
     import UniqueItem from "model/Base/UniqueItem";
+
     enum EventEnum {
         BeforeNameChange = "BeforeNameChange",
         AfterNameChange = "AfterNameChange"
@@ -199,10 +200,11 @@ declare module "model/Schema/Seed" {
     }
 }
 declare module "model/Event/ItemDeleteListener" {
-    import { EventEmitter } from 'events';
+    import {EventEmitter} from 'events';
     import StrictEventEmitter from 'strict-event-emitter-types';
     import UniqueItem from "model/Base/UniqueItem";
     import UniqueList from "model/Base/UniqueList";
+
     enum EventEnum {
         BeforeFieldDelete = "BeforeFieldDelete",
         AfterFieldDelete = "AfterFieldDelete"
@@ -227,7 +229,7 @@ declare module "model/Event/ItemDeleteListener" {
 declare module "model/Schema/Field" {
     import UniqueItem from "model/Base/UniqueItem";
     import UniqueList from "model/Base/UniqueList";
-    import { RuleManager } from "model/Schema/Rule";
+    import {RuleManager} from "model/Schema/Rule";
     import Seed from "model/Schema/Seed";
     export default class Field extends UniqueItem {
         allowNull: boolean;
@@ -260,6 +262,7 @@ declare module "model/Schema/Field" {
 declare module "model/Schema/Index" {
     import UniqueItem from "model/Base/UniqueItem";
     import UniqueList from "model/Base/UniqueList";
+
     export enum IndexTypeEnum {
         fullText = "fullText",
         index = "index",
@@ -293,7 +296,7 @@ declare module "model/Schema/Property" {
 declare module "model/Schema/Preset" {
     import UniqueItem from "model/Base/UniqueItem";
     import UniqueList from "model/Base/UniqueList";
-    import { PropertyManager } from "model/Schema/Property";
+    import {PropertyManager} from "model/Schema/Property";
     export default class Preset extends UniqueItem {
         original: boolean;
         color: string;
@@ -331,7 +334,7 @@ declare module "model/Schema/Middleware" {
 declare module "model/Schema/Route" {
     import UniqueItem from "model/Base/UniqueItem";
     import UniqueList from "model/Base/UniqueList";
-    import { MiddlewareManager } from "model/Schema/Middleware";
+    import {MiddlewareManager} from "model/Schema/Middleware";
     export default class Route extends UniqueItem {
         method: string;
         path: string;
@@ -344,7 +347,7 @@ declare module "model/Schema/Route" {
 }
 declare module "model/Service/Text" {
     import UniqueItem from "model/Base/UniqueItem";
-    import { DataForScript } from "model/DataForScript";
+    import {DataForScript} from "model/DataForScript";
     export const script = "function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n\n    /**\n     * write code below\n     * it will be executed before generating files of selected Entity\n     */\n}\n";
     export function addQuote(text: any, quote?: string): any;
     export function runText(text: string, data: Object): string;
@@ -358,12 +361,12 @@ declare module "model/Service/Text" {
 declare module "model/Schema/Entity" {
     import UniqueItem from "model/Base/UniqueItem";
     import UniqueList from "model/Base/UniqueList";
-    import { FieldManager } from "model/Schema/Field";
-    import { IndexManager } from "model/Schema/Index";
-    import { PresetManager } from "model/Schema/Preset";
-    import { RelationManager } from "model/Schema/Relation";
-    import { RouteManager } from "model/Schema/Route";
-    import { MiddlewareManager } from "model/Schema/Middleware";
+    import {FieldManager} from "model/Schema/Field";
+    import {IndexManager} from "model/Schema/Index";
+    import {PresetManager} from "model/Schema/Preset";
+    import {RelationManager} from "model/Schema/Relation";
+    import {RouteManager} from "model/Schema/Route";
+    import {MiddlewareManager} from "model/Schema/Middleware";
     export default class Entity extends UniqueItem {
         color: string;
         description: string;
@@ -410,7 +413,7 @@ declare module "model/Schema/Option" {
 declare module "model/Schema/Artisan" {
     import UniqueItem from "model/Base/UniqueItem";
     import UniqueList from "model/Base/UniqueList";
-    import { OptionManager } from "model/Schema/Option";
+    import {OptionManager} from "model/Schema/Option";
     export default class Artisan extends UniqueItem {
         original: boolean;
         color: string;
@@ -425,8 +428,9 @@ declare module "model/Schema/Artisan" {
 }
 declare module "model/Schema/Folder" {
     import UniqueList from "model/Base/UniqueList";
-    import Layer, { LayerManager } from "model/Schema/Layer";
+    import Layer, {LayerManager} from "model/Schema/Layer";
     import Node from "model/Schema/Node";
+
     interface ActionLayer {
         (layer: Layer): void;
     }
@@ -456,10 +460,10 @@ declare module "model/Schema/Folder" {
 }
 declare module "model/Schema/Project" {
     import NameItem from "model/Base/NameItem";
-    import { ArtisanManager } from "model/Schema/Artisan";
-    import { EntityManager } from "model/Schema/Entity";
+    import {ArtisanManager} from "model/Schema/Artisan";
+    import {EntityManager} from "model/Schema/Entity";
     import Folder from "model/Schema/Folder";
-    import { PresetManager } from "model/Schema/Preset";
+    import {PresetManager} from "model/Schema/Preset";
     export default class Project extends NameItem {
         version: number;
         apiVersion: string;
@@ -482,8 +486,9 @@ declare module "model/Schema/Layer" {
     import UniqueList from "model/Base/UniqueList";
     import Entity from "model/Schema/Entity";
     import Node from "model/Schema/Node";
-    import { PresetManager } from "model/Schema/Preset";
+    import {PresetManager} from "model/Schema/Preset";
     import Project from "model/Schema/Project";
+
     export enum LayerEnum {
         Migration = "Migration",
         Model = "Model"
@@ -516,10 +521,11 @@ declare module "model/Schema/Layer" {
     }
 }
 declare module "model/DataForScript" {
-    import { LoDashStatic } from 'lodash';
+    import {LoDashStatic} from 'lodash';
     import Entity from "model/Schema/Entity";
     import Layer from "model/Schema/Layer";
     import Project from "model/Schema/Project";
+
     export interface DataForScript {
         entity: Entity;
         layer: Layer;
@@ -642,11 +648,11 @@ declare module "model/DataBase/IData" {
     }
 }
 declare module "model/DataBase/DBConvertor" {
-    import { IData, ITableMySQL, ITablePGSQL } from "model/DataBase/IData";
+    import {IData, ITableMySQL, ITablePGSQL} from "model/DataBase/IData";
     import Entity from "model/Schema/Entity";
     import Field from "model/Schema/Field";
     import Project from "model/Schema/Project";
-    import { PropertyManager } from "model/Schema/Property";
+    import {PropertyManager} from "model/Schema/Property";
     export default abstract class DBConvertor {
         readonly preset: Project;
         readonly project: Project;
@@ -667,7 +673,7 @@ declare module "model/DataBase/DBConvertor" {
 }
 declare module "model/DataBase/MySQLConvertor" {
     import DBConvertor from "model/DataBase/DBConvertor";
-    import { ITableMySQL, IFieldMySQL, IIndexMySQL } from "model/DataBase/IData";
+    import {IFieldMySQL, IIndexMySQL, ITableMySQL} from "model/DataBase/IData";
     import Entity from "model/Schema/Entity";
     export default class MySQLConvertor extends DBConvertor {
         getPresetKeyOfFieldType(): string;
@@ -682,9 +688,9 @@ declare module "model/DataBase/MySQLConvertor" {
 }
 declare module "model/DataBase/PGSQLConvertor" {
     import DBConvertor from "model/DataBase/DBConvertor";
-    import { ITablePGSQL, IFieldPGSQL, IIndexPGSQL } from "model/DataBase/IData";
+    import {IFieldPGSQL, IIndexPGSQL, ITablePGSQL} from "model/DataBase/IData";
     import Entity from "model/Schema/Entity";
-    import { IndexTypeEnum } from "model/Schema/Index";
+    import {IndexTypeEnum} from "model/Schema/Index";
     export default class PGSQLConvertor extends DBConvertor {
         getPresetKeyOfFieldType(): string;
         getPresetKeyOfIncrementMap(): string;
@@ -698,7 +704,7 @@ declare module "model/DataBase/PGSQLConvertor" {
     }
 }
 declare module "model/DataBase/Convertor" {
-    import { IData } from "model/DataBase/IData";
+    import {IData} from "model/DataBase/IData";
     import Project from "model/Schema/Project";
     export default class Convertor {
         readonly preset: Project;
@@ -717,7 +723,7 @@ declare module "model/Dialogue/NameDialogue" {
     }
 }
 declare module "model/Bridge/Response" {
-    import { ActionEnum } from "model/Bridge/ActionEnum";
+    import {ActionEnum} from "model/Bridge/ActionEnum";
     import IResponse from "model/Bridge/IResponse";
     export default class Response implements IResponse {
         action: ActionEnum;
@@ -744,7 +750,7 @@ declare module "model/Service/Save" {
     }
 }
 declare module "model/Bridge/Payload" {
-    import { ActionEnum } from "model/Bridge/ActionEnum";
+    import {ActionEnum} from "model/Bridge/ActionEnum";
     export default class Payload {
         action: ActionEnum;
         key: string;
@@ -754,7 +760,7 @@ declare module "model/Bridge/Payload" {
     }
 }
 declare module "model/Bridge/ToJava" {
-    import { ActionEnum } from "model/Bridge/ActionEnum";
+    import {ActionEnum} from "model/Bridge/ActionEnum";
     import HandlerManager from "model/Bridge/HandlerManager";
     import ICEFW from "model/Bridge/ICEFW";
     import IHandler from "model/Bridge/IHandler";
@@ -767,7 +773,7 @@ declare module "model/Bridge/ToJava" {
 }
 declare module "model/Bridge/Route" {
     import Project from "model/Schema/Project";
-    import { ActionEnum } from "model/Bridge/ActionEnum";
+    import {ActionEnum} from "model/Bridge/ActionEnum";
     import IHandler from "model/Bridge/IHandler";
     import ToJava from "model/Bridge/ToJava";
     export default class Route {
@@ -820,7 +826,7 @@ declare module "model/State" {
     import ListDialogue from "model/Dialogue/ListDialogue";
     import Layer from "model/Schema/Layer";
     import Entity from "model/Schema/Entity";
-    import { IData } from "model/DataBase/IData";
+    import {IData} from "model/DataBase/IData";
     import NameDialogue from "model/Dialogue/NameDialogue";
     import ICEFW from "model/Bridge/ICEFW";
     import Route from "model/Bridge/Route";

@@ -35,12 +35,12 @@ class FilmPlanet extends Model
         'planet_id'
     ];
 
-    public function film():BelongsTo
+    public function film(): BelongsTo
     {
         return $this->belongsTo(Film::class);
     }
 
-    public function planet():BelongsTo
+    public function planet(): BelongsTo
     {
         return $this->belongsTo(Planet::class);
     }

@@ -35,12 +35,12 @@ class CharacterFilm extends Model
         'film_id'
     ];
 
-    public function character():BelongsTo
+    public function character(): BelongsTo
     {
         return $this->belongsTo(Character::class);
     }
 
-    public function film():BelongsTo
+    public function film(): BelongsTo
     {
         return $this->belongsTo(Film::class);
     }

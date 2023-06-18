@@ -14,25 +14,26 @@ class xCreateCharactersTable extends Migration
     public function up()
     {
         Schema::create(
-            'characters', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name')->unique();
+            'characters',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('name')->unique();
 
-            $table->unsignedBigInteger('planet_id');
-            $table->unsignedBigInteger('kind_id');
-            $table->text('birth_year');
-            $table->text('eye_color');
-            $table->string('gender');
-            $table->string('hair_color');
-            $table->string('height');
-            $table->string('mass');
-            $table->string('url')->unique()->nullable();
-            $table->text('skin_color');
-            $table->text('photo')->nullable();
-            // $table->timestamps();
-            $table->foreign('planet_id')->references('id')->on('planets')->onDelete('cascade');
-            $table->foreign('kind_id')->references('id')->on('kinds')->onDelete('cascade');
-        }
+                $table->unsignedBigInteger('planet_id');
+                $table->unsignedBigInteger('kind_id');
+                $table->text('birth_year');
+                $table->text('eye_color');
+                $table->string('gender');
+                $table->string('hair_color');
+                $table->string('height');
+                $table->string('mass');
+                $table->string('url')->unique()->nullable();
+                $table->text('skin_color');
+                $table->text('photo')->nullable();
+                // $table->timestamps();
+                $table->foreign('planet_id')->references('id')->on('planets')->onDelete('cascade');
+                $table->foreign('kind_id')->references('id')->on('kinds')->onDelete('cascade');
+            }
         );
     }
 

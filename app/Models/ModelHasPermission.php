@@ -30,7 +30,7 @@ class ModelHasPermission extends Model
         'model_id' => 'int'
     ];
 
-    public function permission():BelongsTo
+    public function permission(): BelongsTo
     {
         return $this->belongsTo(Permission::class);
     }

@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 /**
  * Created by Reliese Model.
  */
@@ -57,18 +58,19 @@ class Starship extends Model
         'passengers'
     ];
 
-    public function characters():BelongsToMany
+    public function characters(): BelongsToMany
     {
         return $this->belongsToMany(Character::class)
             ->withPivot('id');
     }
 
-    public function films():BelongsToMany
+    public function films(): BelongsToMany
     {
         return $this->belongsToMany(Film::class)
             ->withPivot('id');
     }
-    public function photos():MorphMany
+    public function photos(): MorphMany
     {
         return $this->morphMany(Photo::class, 'photoable');
-    }}
+    }
+}

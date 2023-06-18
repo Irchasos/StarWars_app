@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Film;
 
 class FilmRepository implements FilmInterface

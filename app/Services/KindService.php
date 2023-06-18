@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Repositories\KindInterface;
 use Illuminate\Support\Collection;
 

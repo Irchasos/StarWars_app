@@ -14,12 +14,13 @@ class TrailersFilmTable extends Migration
     public function up()
     {
         Schema::create(
-            'trailer_film', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->UnsignedBiginteger('film_id');
-            $table->text('path');
-            $table->foreign('film_id')->references('id')->on('films');
-        }
+            'trailer_film',
+            function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->UnsignedBiginteger('film_id');
+                $table->text('path');
+                $table->foreign('film_id')->references('id')->on('films');
+            }
         );
     }
 

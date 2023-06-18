@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Created by Reliese Model.
@@ -63,9 +64,11 @@ class Kind extends Model
 
     public function photos(): HasManyThrough
     {
-        return $this->hasManyThrough(Photo::class,
+        return $this->hasManyThrough(
+            Photo::class,
             Character::class,
             'kind_id',
-            'photoable_id');
+            'photoable_id'
+        );
     }
 }

@@ -9,6 +9,16 @@
   <component name="PHPCodeSnifferOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpCSFixer">
+    <phpcsfixer_settings>
+      <PhpCSFixerConfiguration tool_path="$PROJECT_DIR$/vendor/bin/php-cs-fixer" />
+    </phpcsfixer_settings>
+  </component>
+  <component name="PhpCodeSniffer">
+    <phpcs_settings>
+      <PhpCSConfiguration tool_path="$PROJECT_DIR$/vendor/bin/phpcs" />
+    </phpcs_settings>
+  </component>
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
@@ -155,6 +165,12 @@
       <path value="$PROJECT_DIR$/vendor/elastic/transport" />
       <path value="$PROJECT_DIR$/vendor/elasticsearch/elasticsearch" />
       <path value="$PROJECT_DIR$/vendor/jackiedo/cart" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/php-cs-fixer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

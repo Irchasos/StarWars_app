@@ -1,4 +1,5 @@
 <?php
+
 return [
     "a_colloquial_title_also_used_for_the_rulers_of_the" => "A colloquial title also used for the rulers of the North was the \"Kings of Winter\". House Stark ruled as Kings in the North for thousands of years.",
     "action" => "Action",

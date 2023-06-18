@@ -14,21 +14,22 @@ class CreatePlanetsTable extends Migration
     public function up()
     {
         Schema::create(
-            'planets', function (Blueprint $table) {
-            $table->id();
-            $table->text('name');
-            $table->text('rotation_period');
-            $table->text('orbital_period');
-            $table->text('diameter');
-            $table->text('climate');
-            $table->text('gravity');
-            $table->text('terrain');
-            $table->text('surface_water');
-            $table->text('population');
-            $table->text('url')->nullable();
-            //             $table->json('residents')->default(['database','via']);
-            //              $table->json('films')->default(['database','via']);
-        }
+            'planets',
+            function (Blueprint $table) {
+                $table->id();
+                $table->text('name');
+                $table->text('rotation_period');
+                $table->text('orbital_period');
+                $table->text('diameter');
+                $table->text('climate');
+                $table->text('gravity');
+                $table->text('terrain');
+                $table->text('surface_water');
+                $table->text('population');
+                $table->text('url')->nullable();
+                //             $table->json('residents')->default(['database','via']);
+                //              $table->json('films')->default(['database','via']);
+            }
         );
     }
 

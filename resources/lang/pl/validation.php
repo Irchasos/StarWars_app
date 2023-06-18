@@ -1,4 +1,5 @@
 <?php
+
 return [
     "accepted" => " :attribute należy zaakceptować.",
     "accepted_if" => " :attribute należy zaakceptować, gdy :other to :value.",

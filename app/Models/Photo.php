@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 /**
  * Created by Reliese Model.
  */
@@ -31,7 +32,7 @@ class Photo extends Model
         'id'
     ];
 
-    public function photoable():MorphTo
+    public function photoable(): MorphTo
     {
         return $this->morphTo();
     }
