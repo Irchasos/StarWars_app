@@ -1,93 +1,97 @@
-version: "3.8"
+version: '2.0'
 services:
-  app:
-    container_name: Starwars
-    build:
-      context: ./
-      dockerfile: ./.docker/php-fpm/Dockerfile
-    restart: unless-stopped
-    volumes:
-      - ./:/var/www/
-      - .docker/php-fpm/entrypoint/docker-entrypoint.sh:/opt/docker-entrypoint.sh:ro
-    depends_on:
-      - database
-    networks:
-      - docker
-  dozzle:
-    container_name: dozzle_logs
-    image: amir20/dozzle:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    ports:
-      - "9080:8080"
-    environment:
-      DOZZLE_LEVEL: trace
-    healthcheck:
-      test: [ "CMD", "/dozzle", "healthcheck" ]
-      interval: 3s
-      timeout: 30s
-      retries: 5
-      start_period: 30s
-    networks:
-      - docker
-  nginx:
-    container_name: nginx
-    image: nginx:alpine
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "8080:80"
-      - "443:443"
-    volumes:
-      - ./:/var/www
-      - .docker/nginx/conf.d/:/etc/nginx/conf.d/
-    networks:
-      - docker
-  database:
-    container_name: db_mysql
-    build:
-      context: ./
-      dockerfile: ./.docker/mysql/Dockerfile
-    environment:
-      - MYSQL_DATABASE=database
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=123
-      - MYSQL_ROOT_PASSWORD=123
-    volumes:
-      - ./.docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - ./.docker/mysql/data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    networks:
-      - docker
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: php_my_admin
-    restart: unless-stopped
-    ports:
-      - "8081:80"
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=database
-      - PMA_USER=root
-      - PMA_PASSWORD=123
-    networks:
-      - docker
-  redis:
-    container_name: redis
-    image: redis
-    restart: unless-stopped
-    volumes:
-      - .docker/redis/data:/data
-    networks:
-      - docker
-    ports:
-      - "6379:6379"
-  mailcatcher:
+
+ #PHP Service
+   app:
+       build:
+           context: .
+           dockerfile: Dockerfile
+       image: cloudsigma.com/php:8.1.7
+       container_name: Starwars
+       restart: unless-stopped
+       tty: true
+       environment:
+           SERVICE_NAME: app
+           SERVICE_TAGS: dev
+       working_dir: /var/www/html/
+       volumes:
+           - ./:/var/www/html/
+           - ./php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
+       networks:
+           - app-network
+   dozzle:
+      container_name: dozzle_logs
+      image: amir20/dozzle:latest
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+        - "9080:8080"
+      environment:
+        DOZZLE_LEVEL: trace
+      healthcheck:
+        test: [ "CMD", "/dozzle", "healthcheck" ]
+        interval: 3s
+        timeout: 30s
+        retries: 5
+        start_period: 30s
+      networks:
+        - app-network          
+   mailcatcher:
     image: schickling/mailcatcher:latest
     ports:
       - "1025:1025"
       - "1080:1080"
+   #Nginx Service
+   webserver:
+       image: nginx:alpine
+       container_name: Starwars-webserver
+       restart: unless-stopped
+       tty: true
+       ports:
+           - "80:80"
+           - "443:443"
+       volumes:
+           - ./:/var/www/html/
+           - ./nginx/conf.d/:/etc/nginx/conf.d/
+       networks:
+           - app-network
+
+   phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: Starwars-phpmyadmin
+    restart: unless-stopped
+    ports:
+        - "8081:80"
+    environment:
+        - PMA_HOST=db
+        - PMA_PORT=3306
+    networks:
+        - app-network
+
+  # MySQL Service
+   db:
+       image: mysql:5.7.32
+       container_name: Starwars-db
+       restart: unless-stopped
+       tty: true
+       ports:
+           - "3306:3306"
+       environment:
+           MYSQL_DATABASE: starwars
+           MYSQL_ROOT_PASSWORD: 123
+           SERVICE_TAGS: dev
+           SERVICE_NAME: mysql
+       volumes:
+           - dbdata:/var/lib/mysql/
+           - ./mysql/my.cnf:/etc/mysql/my.cnf
+       networks:
+           - app-network
+
+#Docker Networks
 networks:
-  docker:
-    name: docker
+   app-network:
+       driver: bridge
+#Volumes
+volumes:
+   dbdata:
+       driver: local
