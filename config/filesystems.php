@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DRIVER', 'google'),
+    'default' => env('FILESYSTEM_DRIVER', 'local'),
 
     /*
     |--------------------------------------------------------------------------
