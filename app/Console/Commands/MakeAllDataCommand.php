@@ -35,7 +35,7 @@ class MakeAllDataCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle() :void
     {
         $this->call('command:planets');
         $this->call('command:starships');
@@ -54,6 +54,7 @@ class MakeAllDataCommand extends Command
         $this->call('command:roles');
         $this->call('command:setperm');
         $this->call('command:trailer');
+        $this->call('command:data_template');
 
 
     }

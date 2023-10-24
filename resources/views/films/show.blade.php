@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     <div class="row">
+        <img src="https://drive.proton.me/2a97b205-8c23-4776-a36f-4b822eb59a9c" alt="Your Image">
 
         <div class="col-md-3 right-grid">
             @foreach($film->trailers as $trailer)
