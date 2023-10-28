@@ -8,6 +8,7 @@ use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use App\Notifications\SlackMessageNotification;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
@@ -211,8 +212,10 @@ class CustomAuthController extends Controller
     {
         $message = $request->input('message');
 
-        Notification::route('slack', config('services.slack.webhook_url'))
-            ->notify(new SlackMessageNotification($message));
+        (new SlackMessage)
+            ->from('Pradeep', ':pradeep:')
+            ->to('general')
+            ->content('Fix service request by '.$message);
 
         return redirect('/index')->with('success', 'Message sent');
 

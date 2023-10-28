@@ -1,42 +1,33 @@
 @extends('layouts.layout')
 @section('content')
-    <div class="row">
 
-        <div class="col-md-3 right-grid">
-            @if(file_exists($vehicle->photos))
 
+@extends('layouts.layout')
+@section('content')
+    <div class="container-fluid" style="padding-top: 20px">
+        <div class="left-top col-md-6">
+            @if (isset($vehicle->photos) && count($vehicle->photos) > 0)
                 @foreach($vehicle->photos as $photo)
-
-                    <img src="{{$photo->path}}" alt=""
-                         style="width: 700px; height: 800px; padding-bottom: 30px "/>>
-
+                    <img src="{{ $photo->path }}" alt="" style="width: 600px; height: 800px; padding-bottom: 30px"/>
                 @endforeach
-            @elseif(file_exists($placeholder))
-                <img src="{{url ($placeholder->path)}}" alt=""
-                     style="width: 800px; height: 800px; padding-bottom: 30px "/>
+            @else
+                <img src="{{ asset('images/placeholders/vehicle.jpg') }}" alt=""
+                     style="width: 600px; height: 600px; padding-bottom: 30px"/>
+
             @endif
-
-            <!--Put your Right Image HERE-->
         </div>
-
-        <div class="col-md-9 right-grid" style="text-align: right ">
-            <div class="right-top">
-
-                <div class="right-bottom">
-
-                    <h3><span>{{$vehicle->name}}</span></h3>
+        <div class="right-bottom right-top col-md-14 right-grid" style="text-align: center">
+            <h4><span>{{$vehicle->name}}</span>
 
 
-                    <p class="lable1"> Osoby korzystające z {{$vehicle->name}} to
-                        : @foreach($vehicle->characters as $character)
-                            <br>
-                            {{$character->name}}
-                        @endforeach
-                    </p>
-                </div>
 
-            </div>
-            <div class="clearfix"></div>
+
+            <p>Osoby korzystające z {{$vehicle->name}} to
+                : @foreach($vehicle->characters as $character)
+                    <br>
+                    {{$character->name}}
+                @endforeach</p>
         </div>
     </div>
+    <hr>
 @endsection

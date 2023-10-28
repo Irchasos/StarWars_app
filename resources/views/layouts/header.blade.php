@@ -7,9 +7,9 @@
 
     <title>{{ trans('mainpage.star_wars_app') }}</title>
     <script src="https://kit.fontawesome.com/43af320612.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
     {{--    <link href="{{asset('css/all.min.css')}}" rel="stylesheet" type="text/css" media="all">--}}

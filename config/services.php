@@ -55,13 +55,7 @@ return [
         'client_secret' => env('SLACK_CLIENT_SECRET'),
         'redirect' => env('SLACK_REDIRECT_CALLBACK_URL'),
     ],
-    'slack' => [
-        'custom' => [
-            'channel' => env('SLACK_WEBHOOK_CHANNEL'),
-            'username' => env('SLACK_WEBHOOK_USERNAME'),
-            'url' => env('SLACK_WEBHOOK_URL'),
-        ],
-    ],
+
 
 
 ];

@@ -7,7 +7,7 @@ return [
     "before" => "before",
     "birth" => "Birth:",
     "create" => "create",
-    "detail_of_character" => "details of character",
+    "details_of_character" => "details of character",
     "search" => "Search",
     "edit" => "edit",
     "eye_color" => "Eye Color:",

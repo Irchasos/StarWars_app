@@ -19,7 +19,7 @@ class CharacterFilmTable extends Migration
                 $table->bigIncrements('id');
                 $table->UnsignedBiginteger('character_id');
                 $table->UnsignedBiginteger('film_id');
-                $table->foreign('character_id')->references('id')->on('characters');
+                $table->foreign('character_id')->references('id')->on('characters') ->onDelete('cascade');;
                 $table->foreign('film_id')->references('id')->on('films');
             }
         );

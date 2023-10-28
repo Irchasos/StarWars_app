@@ -21,7 +21,12 @@ input[type="button"] {
     -ms-transition: 0.5s all;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     padding: 0 0;
     margin: 0 0;
 }
@@ -43,7 +48,7 @@ album {
 body {
     background-color: #1a1a1a;
     padding: 0 0;
-    margin: 0 0;
+    margin: 1000 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
 }
@@ -565,7 +570,7 @@ div#portfoliolist {
     color: white;
 }
 
-article > div {
+article>div {
     text-align: center;
 }
 
@@ -602,7 +607,8 @@ article > div {
     left: 40px;
 }
 
-.wmuSliderPrev, .wmuSliderNext {
+.wmuSliderPrev,
+.wmuSliderNext {
     position: absolute;
     width: 29px;
     height: 50px;
@@ -1142,7 +1148,8 @@ article > div {
     margin-top: 2em;
 }
 
-.content-form h3, .comments h3 {
+.content-form h3,
+.comments h3 {
     color: #fac832;
     margin-bottom: 1em;
     text-decoration: none;
@@ -1151,7 +1158,8 @@ article > div {
     font-size: 1.7em;
 }
 
-.content-form form input[type="text"], .content-form form textarea {
+.content-form form input[type="text"],
+.content-form form textarea {
     padding: 10px 15px;
     width: 60%;
     color: #4E4F63;
@@ -1467,7 +1475,8 @@ article > div {
         font-size: 2em;
     }
 
-    .wmuSliderPrev, .wmuSliderNext {
+    .wmuSliderPrev,
+    .wmuSliderNext {
         top: 60%;
     }
 
@@ -1584,7 +1593,8 @@ article > div {
         font-size: 1.3em;
     }
 
-    .content-form h3, .comments h3 {
+    .content-form h3,
+    .comments h3 {
         font-size: 1.5em
     }
 
@@ -2005,7 +2015,8 @@ article > div {
         font-size: 1em;
     }
 
-    .content-form h3, .comments h3 {
+    .content-form h3,
+    .comments h3 {
         font-size: 1.4em;
     }
 
@@ -2194,7 +2205,8 @@ article > div {
         font-size: 1.3em;
     }
 
-    .wmuSliderPrev, .wmuSliderNext {
+    .wmuSliderPrev,
+    .wmuSliderNext {
         top: 54%;
     }
 
@@ -2320,7 +2332,8 @@ article > div {
         font-size: 0.9em;
     }
 
-    .content-form h3, .comments h3 {
+    .content-form h3,
+    .comments h3 {
         font-size: 1.3em;
     }
 
@@ -2328,7 +2341,8 @@ article > div {
         font-size: 1.2em;
     }
 
-    .content-form form input[type="text"], .content-form form textarea {
+    .content-form form input[type="text"],
+    .content-form form textarea {
         width: 100%;
     }
 
@@ -2576,7 +2590,8 @@ article > div {
         margin: 0em auto 0;
     }
 
-    .wmuSliderPrev, .wmuSliderNext {
+    .wmuSliderPrev,
+    .wmuSliderNext {
         top: 46%;
     }
 
@@ -2723,7 +2738,8 @@ article > div {
         font-size: 1.05em;
     }
 
-    .content-form h3, .comments h3 {
+    .content-form h3,
+    .comments h3 {
         font-size: 1.2em;
     }
 
@@ -2904,7 +2920,8 @@ article > div {
         left: 10px;
     }
 
-    .wmuSliderPrev, .wmuSliderNext {
+    .wmuSliderPrev,
+    .wmuSliderNext {
         top: 47%;
     }
 
@@ -3003,7 +3020,8 @@ article > div {
         font-size: 1em;
     }
 
-    .content-form h3, .comments h3 {
+    .content-form h3,
+    .comments h3 {
         font-size: 1.05em;
     }
 

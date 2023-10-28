@@ -7,7 +7,7 @@
                         <i class="fab fa-slack"></i>
                         <div class="cta-text">
                             <h4>{{ trans('mainpage.slack') }}</h4>
-                            <span></span>
+                            <span>Irchasos</span>
                         </div>
                     </div>
                 </div>
@@ -40,9 +40,13 @@
                         </div>
                         <div class="footer-social-icon">
                             <span>{{ trans('mainpage.media') }}</span>
-                            <a href="https://www.facebook.com/profile.php?id=100003682641168"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                            <a href="#"><i class="fab fa-slack twitter-bg"></i></a>
-                            <a href="https://github.com/Irchasos?tab=repositories"><i class="fab fa-github google-bg"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100003682641168"><i
+                                    class="fab fa-facebook-f facebook-bg"></i></a>
+                            <a
+                                href="https://join.slack.com/t/slack-s0a6594/shared_invite/zt-260asmfgg-vjrH6ktoocTEAsFdWkcQ1g"><i
+                                    class="fab fa-slack twitter-bg"></i><a/>
+                                <a href="https://github.com/Irchasos?tab=repositories"><i
+                                        class="fab fa-github google-bg"></i></a>
                         </div>
                     </div>
                 </div>
@@ -53,8 +57,11 @@
                         </div>
                         <ul>
                             <li><a href="#">{{ trans('mainpage.home') }}</a></li>
-                            <li><a href="#">{{ trans('mainpage.portfolio') }}</a></li>
-                            <li><a href="https://trello.com/invite/b/S1rFXjpo/fbe7a88a232507be168974a7e1336a11/starwarsapp">{{ trans('mainpage.trello') }}</a></li>
+                            <li><a href="https://irchasos.github.io/Portfolio/">{{ trans('mainpage.portfolio') }}</a>
+                            </li>
+                            <li><a
+                                    href="https://trello.com/invite/b/S1rFXjpo/fbe7a88a232507be168974a7e1336a11/starwarsapp">{{ trans('mainpage.trello') }}</a>
+                            </li>
                             <li><a href="#">{{ trans('mainpage.invoice') }}</a></li>
                             <li><a href="#">{{ trans('mainpage.storage') }} </a></li>
                             <li><a href="#">{{ trans('mainpage.blog') }}</a></li>
@@ -70,7 +77,8 @@
                         <div class="subscribe-form">
                             <form action="{{ route('sendSlackMessage') }}" method="POST">
                                 @csrf
-                                <input type="text" name="message" placeholder="{{ trans('mainpage.message') }}">
+                                <label for="message"></label>
+                                <input type="text" id="message" name="message" placeholder="{{ trans('mainpage.message') }}">
                                 <button type="submit"><i class="fab fa-telegram-plane"></i></button>
                             </form>
                         </div>

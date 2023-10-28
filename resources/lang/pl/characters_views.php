@@ -11,7 +11,7 @@ return [
     "edit" => "Edytuj",
     "eye_color" => "Kolor oczu:",
     "films" => "Filmy",
-    "from" => "Z",
+    "from" => "z",
     "gender" => "Płeć:",
     "hair_color" => "Kolor włosów:",
     "height" => "Wzrost:",
