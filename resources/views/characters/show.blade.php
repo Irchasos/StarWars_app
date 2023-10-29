@@ -2,15 +2,15 @@
 @section('content')
     <div class="container-fluid" style="padding-top: 20px">
         <div class="left-top col-md-6">
-            @if (isset($character->photos) && count($character->photos) > 0)
+{{--            @if (isset($character->photos) && count($character->photos) > 0)--}}
                 @foreach($character->photos as $photo)
                     <img src="{{ $photo->path }}" alt="" style="width: 600px; height: 800px; padding-bottom: 30px"/>
                 @endforeach
-            @else
-                <img src="{{ asset('images/placeholders/character.jpg') }}" alt=""
-                     style="width: 600px; height: 600px; padding-bottom: 30px"/>
+{{--            @else--}}
+{{--                <img src="{{ asset('images/placeholders/character.jpg') }}" alt=""--}}
+{{--                     style="width: 600px; height: 600px; padding-bottom: 30px"/>--}}
 
-            @endif
+{{--            @endif--}}
 
 
         </div>

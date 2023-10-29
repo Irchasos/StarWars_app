@@ -1,4 +1,5 @@
 @extends('layouts.layout')
+
 @section('content')
     {{--    @can('add photo to items')--}}
     <div class="container mt-5">
@@ -9,7 +10,7 @@
             </div>
         @endif
 
-        <div class="card">
+        <div class="card bg-dark text-white">
 
             <div class="card-header text-center font-weight-bold">
                 <h2>Uploading Image for {{ Request()->parameter }}</h2>
@@ -28,10 +29,9 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <strong>Type:</strong>
-                                <input type="text" name="photoable_type" value="App\Models\{{$model}}"
-                                       class="form-control"
-                                >
+                                <strong>Type: {{$model}}</strong>
+                                <input type="text" name="photoable_type" hidden value="App\Models\{{$model}}"
+                                       class="form-control" style="background-color: #2b2a2a">
                                 @if ($errors->has('photoable_type'))
                                     <span
                                             class="text-danger">{{ $errors->first('photoable_type') }}</span>
@@ -39,16 +39,13 @@
                             </div>
                         </div>
                         <div class="form-group"><strong>Record:</strong>
-                            <select name="photoable_id" required>
+                            <select  style="color: black" name="photoable_id" required>
                                 <option selected disabled>Choose Record</option>
                                 @foreach( $records as $record)
-
-                                    <option value="{{$record->id}}">
+                                    <option style="background-color: grey " value="{{$record->id}}">
                                         {{$record->name}}
-
                                     </option>
                                 @endforeach
-
                             </select>
                         </div>
                         <div class="col-md-12">
@@ -56,18 +53,14 @@
                         </div>
                     </div>
                 </form>
-
             </div>
-
         </div>
-
     </div>
     {{--    @endcan--}}
     @cannot('add photo to items')
-        <div class="card">
-            <a a href="{{route('myAccount')}}" class="card-header text-center font-weight-bold">
+        <div class="card bg-dark">
+            <a a href="{{route('myAccount')}}" class="card-header text-center font-weight-bold text-white">
                 <h2>Your range is too low</h2></a>
         </div>
-
     @endcannot
 @endsection

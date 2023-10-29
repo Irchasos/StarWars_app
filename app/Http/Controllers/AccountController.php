@@ -102,7 +102,7 @@ class AccountController extends Controller
             'date2' => Carbon::now()->addDays($request->time)
         ];
 
-        return PDF::loadView('myPDF', $data)->download('itsolutionstuff.pdf');
+        return \Barryvdh\DomPDF\Facade\Pdf::loadView('myPDF', $data)->download('itsolutionstuff.pdf');
     }
 
     public function chooseModel(): View
