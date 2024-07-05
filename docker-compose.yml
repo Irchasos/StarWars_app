@@ -1,4 +1,4 @@
-version: '2.0'
+version: '3.0'
 services:
 
  #PHP Service
@@ -6,7 +6,7 @@ services:
        build:
            context: .
            dockerfile: Dockerfile
-       image: cloudsigma.com/php:8.1.7
+       image: cloudsigma.com/php8.2
        container_name: Starwars
        restart: unless-stopped
        tty: true

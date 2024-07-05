@@ -24,7 +24,6 @@ return [
     'about' => 'W wolnych chwilach tworzę strony internetowe w oparciu o Laravela.',
     'media' => 'Media',
     'useful_links' => 'Useful Links',
-    'home' => 'Home',
     'portfolio' => 'Portfolio',
     'invoice' => 'Invoice',
     'trello' => 'Trello',

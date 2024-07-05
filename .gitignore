@@ -1,2 +1,4 @@
 .docker/redis/data/dump.rdb
 node_modules
+
+vendor/

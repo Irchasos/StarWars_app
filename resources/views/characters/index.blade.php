@@ -1,5 +1,4 @@
 @extends('layouts.layout')
-
 @section('content')
     @if(Session::has('success'))
         <div class="alert alert-success">
@@ -9,7 +8,6 @@
             @endphp
         </div>
     @endif
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">

@@ -9,8 +9,7 @@
             @endphp
         </div>
     @endif
-
-    @can('make a character in base')
+        @can('make a character in base')
         <a class="btn btn-success" href="{{ route('planets.create') }}">{{ trans('planets_views.create') }}</a>
     @endcan
 
