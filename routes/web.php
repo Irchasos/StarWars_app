@@ -22,8 +22,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
+ */
 
 Route::get('/', [HomeController::class, 'entrance'])->name('entrance');
 Route::get('/index', [HomeController::class, 'index'])->name('index');
@@ -59,7 +58,6 @@ Route::get('/vehicles', [VehiclesController::class, 'index'])->name('vehicles');
 Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicles.show');
 Route::get('/films', [FilmsController::class, 'index'])->name('films');
 Route::get('/films/{film}', [FilmsController::class, 'show'])->name('films.show');
-
 
 Route::get(
     '/register',
@@ -101,8 +99,6 @@ Route::DELETE('/photos/{photo}', [AccountController::class, 'destroy'])->name('i
 Route::get('my-eq', [EqController::class, 'myEq'])->name('myEq')->middleware('auth');
 Route::get('store', [CartController::class, 'index'])->name('store.index')->middleware('auth');
 Route::post('cart/{productId}', [CartController::class, 'addToCart'])->name('store.cart')->middleware('auth');
-
-
 
 Route::get('refresh_captcha', 'HomeController@refreshCaptcha')->name('refresh_captcha');
 Route::post('/send-slack-message', [CustomAuthController::class, 'SendSlackMessage'])->name('sendSlackMessage');
