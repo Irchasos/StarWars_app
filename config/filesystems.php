@@ -27,15 +27,9 @@ return [
     | Supported Drivers: "local", "ftp", "sftp", "s3"
     |
     */
-    'cloud' => 'google',
+
     'disks' => [
-        'google' => [
-            'driver' => 'google',
-            'clientId' => env('GOOGLE_CLIENT_ID'),
-            'clientSecret' => env('GOOGLE_CLIENT_SECRET'),
-            'refreshToken' => env('GOOGLE_REFRESH_TOKEN'),
-            'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),
-        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

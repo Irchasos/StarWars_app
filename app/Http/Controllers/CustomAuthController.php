@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
-
+use App\Models\Hierarchy;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use App\Notifications\SlackMessageNotification;
@@ -54,6 +54,11 @@ class CustomAuthController extends Controller
         $check = $this->create($data);
         $check->assignRole('Corporal');
         $check->givePermissionTo('add photo to items');
+        Hierarchy::create([
+        'employer_id' => $check->id,  // Użyj id nowo utworzonego użytkownika
+        'boss_id' => 1,              // Przykładowy id przełożonego (boss_id)
+    ]);
+
         alert()->flash('Welcome back!', 'success');
         return redirect("/index")->withSuccess('You have signed-in');
 

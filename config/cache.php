@@ -36,6 +36,9 @@ return [
         'apc' => [
             'driver' => 'apc',
         ],
+'paths' => [
+    realpath(storage_path('framework/views')),
+],
 
         'array' => [
             'driver' => 'array',

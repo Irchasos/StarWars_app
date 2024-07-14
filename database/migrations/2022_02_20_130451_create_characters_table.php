@@ -18,7 +18,6 @@ class CreateCharactersTable extends Migration
             function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name')->unique();
-
                 $table->unsignedBigInteger('planet_id');
                 $table->unsignedBigInteger('kind_id');
                 $table->text('birth_year');
@@ -27,9 +26,10 @@ class CreateCharactersTable extends Migration
                 $table->string('hair_color');
                 $table->string('height');
                 $table->string('mass');
-                $table->string('url')->unique()->nullable();
+                $table->string('url')->nullable();
                 $table->text('skin_color');
                 $table->text('photo')->nullable();
+                $table->text('description')->nullable();
                 // $table->timestamps();
                 $table->foreign('planet_id')->references('id')->on('planets')->onDelete('cascade');
                 $table->foreign('kind_id')->references('id')->on('kinds')->onDelete('cascade');

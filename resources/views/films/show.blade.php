@@ -5,7 +5,7 @@
 
         <div class="col-md-3 right-grid">
             @foreach($film->trailers as $trailer)
-                <iframe style="padding: 50px" width="800" height="500" src="{{$trailer->path}}" frameborder="0"
+                <iframe style="padding: 50px" width="700" height="600" src="{{$trailer->path}}" frameborder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
 
@@ -13,7 +13,7 @@
             @foreach($film->photos as $photo)
 
                 <img src="{{$photo->path}}" alt=""
-                     style="width: 700px; height: 800px; padding-bottom: 30px "/>>
+                     style="width: 400px; height: 500px; padding-bottom: 30px "/>>
             @endforeach
 
             <!--Put your Right Image HERE-->

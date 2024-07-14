@@ -19,6 +19,8 @@ class MakePlanetData extends Command
 
     public function handle(): void
     {
+         // Test połączenia z bazą danych
+        
         $client = new Client();
         try {
             $request = $client->get('https://swapi.py4e.com/api/planets/');

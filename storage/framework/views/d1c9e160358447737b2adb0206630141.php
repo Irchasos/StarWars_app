@@ -68,8 +68,7 @@ unset($__errorArgs, $__bag); ?>
                                        value=" <?php $__currentLoopData = $user->roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php echo e($role->name); ?>  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>">
                             </div>
                             <div class="col-md-12"><label class="labels">Chef name</label>
-                                <input type="text" class="form-control" disabled placeholder="chef name" value="">
-                            </div>
+<input type="text" class="form-control" disabled placeholder="<?php echo e($hierarchy->boss->name ?? 'None'); ?>" value="">                            </div>
 
                             <div class="col-md-12"><label class="labels">Your tasks</label>
                                 <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -114,7 +113,6 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </div>
     </div>
-
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/resources/views/account/profile.blade.php ENDPATH**/ ?>

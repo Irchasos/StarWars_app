@@ -22,6 +22,7 @@
 
                                     <img src="<?php echo e(asset(asset("storage/episode_image/".$film->episode_id.".jpg"))); ?>"
                                          alt="" style="width: 421px; height: 648px "/>
+                                       
                                 </a>
                                 <div class="card-body">
                                     <p class="card-text"><?php echo e($film->title); ?></p>

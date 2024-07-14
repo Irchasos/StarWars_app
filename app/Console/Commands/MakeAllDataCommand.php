@@ -37,24 +37,44 @@ class MakeAllDataCommand extends Command
      */
     public function handle() :void
     {
-        $this->call('command:planets');
-        $this->call('command:starships');
-        $this->call('command:kinds');
-        $this->call('command:characters');
-        $this->call('command:vehicles');
-        $this->call('command:films');
-        $this->call('command:character_starship');
-        $this->call('command:character_vehicle');
-        $this->call('command:character_film');
-        $this->call('command:film_kind');
-        $this->call('command:film_planet');
-        $this->call('command:film_vehicle');
-        $this->call('command:film_starship');
-        $this->call('command:permission');
-        $this->call('command:roles');
-        $this->call('command:setperm');
-        $this->call('command:trailer');
+        
+        $this->info('Importing placeholder_template...');
         $this->call('command:data_template');
+        $this->info('Importing planets...');
+        $this->call('command:planets');
+        $this->info('Importing starships...');
+        $this->call('command:starships');
+        $this->info('Importing kinds...');
+        $this->call('command:kinds');
+        $this->info('Importing characters...');
+        $this->call('command:characters');
+        $this->info('Importing vehicles...');
+        $this->call('command:vehicles');
+        $this->info('Importing films...');
+        $this->call('command:films');
+        $this->info('Importing relations:character-starships...');
+        $this->call('command:character_starship');
+        $this->info('Importing relations:character-vechicles...');
+        $this->call('command:character_vehicle');
+        $this->info('Importing relations:character-films...');
+        $this->call('command:character_film');
+        $this->info('Importing relations:kind-films......');
+        $this->call('command:film_kind');
+        $this->info('Importing relations:planet-films......');
+        $this->call('command:film_planet');
+        $this->info('Importing relations:vechicle-films......');
+        $this->call('command:film_vehicle');
+        $this->info('Importing relations:starship-films......');
+        $this->call('command:film_starship');
+        $this->info('Importing user:permission...');
+        $this->call('command:permission');
+        $this->info('Importing user:roles...');
+        $this->call('command:roles');
+        $this->info('Importing set:user:permission...');
+        $this->call('command:setperm');
+        $this->info('Importing film-trailers...');
+        $this->call('command:trailer');
+        
 
 
     }

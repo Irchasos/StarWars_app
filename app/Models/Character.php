@@ -61,7 +61,8 @@ class Character extends Model
         'url',
         'skin_color',
         'photo',
-        'kind'
+        'kind',
+        'description'
     ];
 
     public function kind(): BelongsTo

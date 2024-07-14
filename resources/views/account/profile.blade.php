@@ -61,8 +61,7 @@
                                        value=" @foreach ($user->roles as $role){{$role->name}}  @endforeach">
                             </div>
                             <div class="col-md-12"><label class="labels">Chef name</label>
-                                <input type="text" class="form-control" disabled placeholder="chef name" value="">
-                            </div>
+<input type="text" class="form-control" disabled placeholder="{{ $hierarchy->boss->name ?? 'None' }}" value="">                            </div>
 
                             <div class="col-md-12"><label class="labels">Your tasks</label>
                                 @foreach ($permissions as $permission)
@@ -107,5 +106,4 @@
             </div>
         </div>
     </div>
-
 @endsection

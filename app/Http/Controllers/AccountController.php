@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
-
+use App\Models\Hierarchy;
 use App\Http\Requests\PassportCharacterRequest;
 use App\Models\Character;
 use App\Models\Photo;
@@ -35,11 +35,14 @@ class AccountController extends Controller
     {
         $user = Auth::user();
         $permissions = $user->getPermissionsViaRoles();
+$hierarchy = Hierarchy::where('employer_id', $user->id)->first();
 
         return view(
             'account.profile', [
             'user' => $user,
-            'permissions' => $permissions
+            'permissions' => $permissions,
+            'hierarchy'=>$hierarchy,
+
             ]
         );
     }
