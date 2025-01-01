@@ -1,6 +1,6 @@
 .docker/redis/data/dump.rdb
 node_modules
 vendor/
-/public/storage
+
 .env
-storage
+
