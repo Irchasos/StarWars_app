@@ -59,7 +59,6 @@
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover --ansi"
     ],
-    "post-install-cmd": [ "Illuminate\\Foundation\\ComposerScripts::postInstall", "php artisan optimize" ],
     "post-update-cmd": [
       "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
     ],
@@ -80,9 +79,7 @@
     "preferred-install": "dist",
     "sort-packages": true,
     "allow-plugins": {
-      "php-http/discovery": true,
-      "cache-files-ttl": 600,
-      "cache-files-maxsize": "300MiB"
+      "php-http/discovery": true
     }
   },
   "minimum-stability": "dev",
