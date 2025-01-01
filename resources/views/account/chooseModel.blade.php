@@ -29,7 +29,7 @@
                                 <div class="card shadow-sm"><a
                                             href="{{route('image.upload',['parameter'=>$photo->photoable_type])}}">
 
-                                        <img src="{{$photo->path}}" alt="" style="width: 421px; height: 648px "/>
+                                        <img src="{{ asset('storage/app/public/placeholders/character.jpg') }}" alt="Character"> alt="" style="width: 421px; height: 648px "/>
                                     </a>
                                     <div class="card-body" style="text-align: center">
                                         <p class="card-text">{{$photo->photoable_type}}</p>
