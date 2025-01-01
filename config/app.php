@@ -171,6 +171,7 @@ return [
 
 
 
+
         /*
          * Package Service Providers...
          */
@@ -183,7 +184,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Jackiedo\Cart\CartServiceProvider::class,
 
@@ -243,7 +243,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ServiceLayerGeneratorServiceProvider' => Zendaemon\Services\ServiceLayerGeneratorServiceProvider::class,
-        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,

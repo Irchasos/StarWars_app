@@ -74,6 +74,12 @@ class MakeAllDataCommand extends Command
         $this->call('command:setperm');
         $this->info('Importing film-trailers...');
         $this->call('command:trailer');
+        $this->info('Importing face_path');
+        $this->call('command:add_face_path');
+        $this->info('Importing characters-expanded infos');
+        $this->call('command:characters-expanded');
+        $this->info('Importing palceholders for categories');
+        $this->call('command:command:PhotoAdd');
         
 
 

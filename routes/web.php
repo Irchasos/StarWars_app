@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', [HomeController::class, 'entrance'])->name('entrance');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/index', [HomeController::class, 'index'])->name('index');
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => '\App\Http\Controllers\LanguageController@switchLang']);
 //Characters->CRUD

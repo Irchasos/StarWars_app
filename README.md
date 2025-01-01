@@ -29,7 +29,6 @@ Each registered user can send a message to their superior, and the superior can 
 
 <ol>
 After Standard installation use : <br>
-php artisan Command:data <br>
-php artisan Command:relations <br>
+php artisan command:data <br>
 </ol>
 

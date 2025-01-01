@@ -20,7 +20,7 @@
     "sass": "^1.56.1",
     "sass-loader": "^12.6.0",
     "vue-loader": "^17.4.2",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^0.1.0"
   },
   "dependencies": {
     "flag-icon": "^2.5.0",
@@ -29,6 +29,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sweetalert2": "^11.6.13",
-    "vue": "^2.6.12"
+    "vue": "^3.5.13"
   }
 }

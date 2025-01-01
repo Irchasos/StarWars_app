@@ -12,7 +12,6 @@ use App\Models\Photo;
 use App\Models\Planet;
 use App\Models\Starship;
 use App\Services\CharacterService;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -28,7 +27,6 @@ class CharactersController extends Controller
 
     public function index(Request $request)
     {
-        Debugbar::info($request);
 
         $term = $request->query('term');
         $homeworldTerm = $request->query('homeworld');
