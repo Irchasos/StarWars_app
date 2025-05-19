@@ -3,16 +3,17 @@
     <div class="container-fluid" style="padding-top: 20px">
         <div class="left-top col-md-6">
             @if (isset($character->photos) && count($character->photos) > 0)
-                @foreach($character->photos as $photo)
-                    <img src="{{ $photo->path }}" alt="" style="width: 600px; height: 800px; padding-bottom: 30px"/>
-                @endforeach
+            <img src="{{$character->photo}}" alt="" style="width: 400px; height: 500; padding-bottom: 30px" />
+            @foreach($character->photos as $photo)
+                <img src="{{ $photo->path }}" alt="" style="width: 400px; height: 500; padding-bottom: 30px" />
+            @endforeach
             @else
                 <img src="{{ asset('images/placeholders/character.jpg') }}" alt=""
                      style="width: 600px; height: 600px; padding-bottom: 30px"/>
 
             @endif
         </div>
-        <div class="right-bottom right-top col-md-14 right-grid" style="text-align: center">
+        <div class="right-bottom right-top col-md-14 right-grid" style="text-align: center; color: gold;">
             <div class="right-top"><h3><span>{{$character->name}}</span><br> from {{$character->planet->name}}</h3>
 
 

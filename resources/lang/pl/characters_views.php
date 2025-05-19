@@ -2,7 +2,7 @@
 
 return [
     "action" => "Akcja",
-    "all_of_characters_or_type_and_searchenter" => "wpisz i wyszukaj (Enter)",
+    "all_of_characters_or_type_and_searchenter" => "wyszukaj",
     "before" => "Przed",
     "birth" => "data narodzin:",
     "create" => "Stwórz",
@@ -16,7 +16,7 @@ return [
     "hair_color" => "Kolor włosów:",
     "height" => "Wzrost:",
     "here_you_can_create_a_new_hero_for_your_story" => "Tutaj możesz stworzyć nowego bohatera dla swojej historii",
-    "homeworld" => "Świat ojczysty:",
+    "homeworld" => "Świat ojczysty",
     "homeworld2" => "Świat ojczysty",
     "kind" => "Gatunek:",
     "kind2" => "Gatunek",

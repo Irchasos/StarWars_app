@@ -80,6 +80,7 @@ class MakeAllDataCommand extends Command
         $this->call('command:characters-expanded');
         $this->info('Importing palceholders for categories');
         $this->call('command:command:PhotoAdd');
+        $this->info('Done');
         
 
 

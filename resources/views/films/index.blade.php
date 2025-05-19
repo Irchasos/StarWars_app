@@ -20,7 +20,7 @@
                         <div class="col">
                             <div class="card shadow-sm"><a href="films/{{$film->id}}">
 
-                                    <img src="{{asset(asset("storage/episode_image/".$film->episode_id.".jpg"))}}"
+                                    <img src="{{asset(asset("images/episode_image/".$film->episode_id.".jpg"))}}"
                                          alt="" style="width: 421px; height: 648px "/>
                                        
                                 </a>

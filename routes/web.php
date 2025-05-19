@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CharactersController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\EqController;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\FilmsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KindsController;
@@ -25,7 +26,6 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/index', [HomeController::class, 'index'])->name('index');
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => '\App\Http\Controllers\LanguageController@switchLang']);
 //Characters->CRUD
 Route::get('/characters', [CharactersController::class, 'index'])->name('characters');
@@ -51,13 +51,17 @@ Route::get('/planets/{planet}', [PlanetsController::class, 'show'])->name('plane
 Route::get('/planets/{planet}/edit', [PlanetsController::class, 'edit'])->name('planets.edit');
 Route::PUT('/planets/{planet}', [PlanetsController::class, 'update'])->name('planets.update');
 Route::DELETE('/planets/{planet}', [PlanetsController::class, 'destroy'])->name('planets.destroy');
-
+//Kind->list
 Route::get('/kinds', [KindsController::class, 'index'])->name('kinds');
 Route::get('/kinds/{kind}', [KindsController::class, 'show'])->name('kinds.show');
+//Vechicles->list
 Route::get('/vehicles', [VehiclesController::class, 'index'])->name('vehicles');
 Route::get('/vehicles/{vehicle}', [VehiclesController::class, 'show'])->name('vehicles.show');
+//films->list
 Route::get('/films', [FilmsController::class, 'index'])->name('films');
 Route::get('/films/{film}', [FilmsController::class, 'show'])->name('films.show');
+//games
+Route::get('/games', [GameController::class, 'index'])->name('games');
 
 Route::get(
     '/register',

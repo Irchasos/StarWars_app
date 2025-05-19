@@ -14,10 +14,10 @@
                 <div class="card bg-dark text-white">
                     <div class="card-header bg-secondary">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-6">
                                 <h3>{{ trans('characters_views.characters_list') }}</h3>
                             </div>
-                            <div class="col-md-6 text-right">
+                            <div class="col-6 text-right">
                                 @can('make a character in base')
                                     <a class="btn btn-dark" href="{{ route('characters.create') }}">{{ trans('characters_views.create') }}</a>
                                 @endcan
@@ -25,12 +25,12 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
+                        <div class="row mb-3">
+                            <div class="col-12">
                                 <form action="{{ route('characters') }}" method="GET" role="search">
-                                    <div class="input-group col-md-12 ">
-                                        <input style="width: 40%" value="{{ Request::get('term') }}" type="text" class="form-control" name="term" placeholder="{{ trans('characters_views.all_of_characters_or_type_and_searchenter') }}" id="term">
-                                        <input style="width: 40%" value="{{ Request::get('homeworld') }}" type="text" class="form-control" name="homeworld" placeholder="{{ trans('characters_views.homeworld') }}" id="homeworld">
+                                    <div class="input-group">
+                                        <input value="{{ Request::get('term') }}" type="text" class="form-control" name="term" placeholder="{{ trans('characters_views.all_of_characters_or_type_and_searchenter') }}" id="term">
+                                        <input value="{{ Request::get('homeworld') }}" type="text" class="form-control" name="homeworld" placeholder="{{ trans('characters_views.homeworld') }}" id="homeworld">
                                         <div class="input-group-append">
                                             <button class="btn btn-secondary" type="submit">{{ trans('characters_views.search') }}</button>
                                         </div>
@@ -55,7 +55,7 @@
                                 <tbody>
                                 @foreach($characters as $character)
                                     <tr>
-                                        <td>{{$character->name}} </td>
+                                        <td>{{$character->name}}</td>
                                         <td><a href="planets/{{$character->planet->id}}">{{$character->planet->name}}</a></td>
                                         <td><a href="kinds/{{$character->kind->id}}">{{$character->kind->name}}</a></td>
                                         <td>
@@ -74,10 +74,10 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            <a class="btn btn-block btn-secondary" href="{{ route('characters.show',$character->id) }}"><i class="fa-solid fa-face-grin-beam"> </i></a>
+                                            <a class="btn btn-block btn-secondary" href="{{ route('characters.show',$character->id) }}"><i class="fa-solid fa-face-grin-beam"></i></a>
                                             @can('edit character in base')
                                                 <form action="{{ route('characters.destroy',$character->id) }}" method="POST">
-                                                    <a class="btn btn-block btn-info" href="{{ route('characters.edit',$character->id) }}"><i class="fa-solid fa-user-pen"></i></a>
+                                                    <a class="btn btn-block btn-info mb-1" href="{{ route('characters.edit',$character->id) }}"><i class="fa-solid fa-user-pen"></i></a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-block btn-danger"><i class="fa-solid fa-person-falling-burst"></i></button>
@@ -95,5 +95,4 @@
             </div>
         </div>
     </div>
-
 @endsection

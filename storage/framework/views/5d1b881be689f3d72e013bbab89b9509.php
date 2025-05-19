@@ -1,6 +1,7 @@
 <head>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/saper.css')); ?>">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>

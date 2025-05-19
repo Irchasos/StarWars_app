@@ -31,5 +31,7 @@ return [
     'storage' => 'Storage',
     'blog' => 'Blog',
     'Messege' => 'Send Message to Our Slack Account',
-    'message' => 'Message'
+    'message' => 'Message',
+    'games' => 'Games'
+
 ];

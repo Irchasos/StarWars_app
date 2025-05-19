@@ -26,7 +26,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - "9081:8080" # Zmiana portu na 9081
+      - "8080:8080"
     environment:
       DOZZLE_LEVEL: trace
     healthcheck:
@@ -41,8 +41,8 @@ services:
   mailcatcher:
     image: schickling/mailcatcher:latest
     ports:
-      - "1026:1025" # Zmiana portu na 1026
-      - "1081:1080" # Zmiana portu na 1081
+      - "1025:1025"
+      - "1080:1080"
     networks:
       - app-network-starwars
 
@@ -53,11 +53,13 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "8080:80"  # Zmiana portu na 8080
-      - "4443:443" # Zmiana portu na 4443
+      - "80:80"
+      - "443:443"
     volumes:
       - ./:/var/www/html/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./letsencrypt:/etc/letsencrypt
+      - ./www:/var/www/certbot
     networks:
       - app-network-starwars
 
@@ -66,10 +68,10 @@ services:
     container_name: Starwars-phpmyadmin
     restart: unless-stopped
     ports:
-      - "8082:80" # Zmiana portu na 8082
+      - "8081:80"
     environment:
       - PMA_HOST=db
-      - PMA_PORT=3307 # Zmiana portu na 3307
+      - PMA_PORT=3306
     networks:
       - app-network-starwars
 
@@ -80,7 +82,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3307:3306" # Zmiana portu na 3307
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: starwars
       MYSQL_ROOT_PASSWORD: 123
@@ -89,6 +91,22 @@ services:
     volumes:
       - dbdata:/var/lib/mysql/
       - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network-starwars
+
+  # Certbot Service
+  certbot:
+    image: certbot/certbot
+    container_name: certbot-starwars
+    volumes:
+      - ./letsencrypt:/etc/letsencrypt
+      - ./www:/var/www/certbot
+    entrypoint: >
+      sh -c 'trap exit TERM;
+      while :; do
+        certbot certonly --webroot -w /var/www/certbot -d irchasos.ovh;
+        sleep 12h & wait $${!};
+      done;'
     networks:
       - app-network-starwars
 
